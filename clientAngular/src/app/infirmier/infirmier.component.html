@@ -1,3 +1,9 @@
-<p>
-  infirmier works!
-</p>
+<ul>
+  <li>{{infirmier.id}}</li>
+  <li>{{infirmier.prenom}}</li>
+  <li>{{infirmier.nom}}</li>
+  <li>{{infirmier.photo}}</li>
+  <ul *ngFor="let patient of infirmier.patients">
+    <app-patient [_patient]="patient"></app-patient>
+  </ul>
+</ul>

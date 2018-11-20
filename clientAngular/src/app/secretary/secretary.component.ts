@@ -9,17 +9,29 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./secretary.component.css']
 })
 export class SecretaryComponent implements OnInit {
+  private _cabinet: CabinetInterface;
 
   constructor(private cabinetMedicalService: CabinetMedicalService) {
-    this.getData('/data/cabinetInfirmier.xml').then(res => {
-      console.log(res);
-    });
+    this.cabinetMedicalService.cabinet.subscribe(cabinet => this._cabinet = cabinet);
   }
 
   ngOnInit() {
   }
 
-  public getData(url: string): Promise<CabinetInterface> {
-    return this.cabinetMedicalService.getData(url);
+
+  get cabinet(): CabinetInterface {
+    return this._cabinet;
+  }
+
+  set cabinet(value: CabinetInterface) {
+    this._cabinet = value;
+  }
+
+  public affectation() {
+    let infirmier = this._cabinet.infirmiers[0];
+    console.log(infirmier);
+    let patient = this._cabinet.infirmiers[1].patients[0];
+    console.log(patient);
+    this.cabinetMedicalService.affectation(infirmier, patient);
   }
 }

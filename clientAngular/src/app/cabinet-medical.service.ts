@@ -5,13 +5,30 @@ import {PatientInterface} from './dataInterfaces/patient';
 import {Adresse} from './dataInterfaces/adresse';
 import {CabinetInterface} from './dataInterfaces/cabinet';
 import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CabinetMedicalService {
+  private _cabinet = new BehaviorSubject<CabinetInterface>({
+    infirmiers: [],
+    patientsNonAffectes: [],
+    adresse: null
+  });
 
   constructor(private http: HttpClient) {
+    this.getData('/data/cabinetInfirmier.xml').then(res => {
+      this._cabinet.next({
+        infirmiers: res.infirmiers,
+        patientsNonAffectes: res.patientsNonAffectes,
+        adresse: res.adresse
+      });
+    });
+  }
+
+  get cabinet(): Observable<CabinetInterface> {
+    return this._cabinet.asObservable();
   }
 
   private static getNodeValue(node: Element, tagName: string): string {
@@ -81,10 +98,10 @@ export class CabinetMedicalService {
   }
 
 
-  private getPatientsInfirmier(patients: Element, intervant: string): PatientInterface[] {
+  private getPatientsInfirmier(patients: Element, intervenant: string): PatientInterface[] {
     const patientList: Array<Element> = Array.from(patients.getElementsByTagName('patient'));
     return patientList.reduce((acc, x) => {
-      if (x.getElementsByTagName('visite').item(0).getAttribute('intervenant') === intervant) {
+      if (x.getElementsByTagName('visite').item(0).getAttribute('intervenant') === intervenant) {
         acc.push(CabinetMedicalService.getPatient(x));
       }
       return acc;
@@ -92,7 +109,7 @@ export class CabinetMedicalService {
 
   }
 
-  public getCabinetInterface(doc: Document): CabinetInterface {
+  private getCabinetInterface(doc: Document): CabinetInterface {
     const infirmiers = this.getInfirmiers(doc.querySelector('infirmiers'), doc.querySelector('patients'));
     return {
       infirmiers: infirmiers,
@@ -107,6 +124,59 @@ export class CabinetMedicalService {
     const cabinet = this.getCabinetInterface(doc);
     return new Promise<CabinetInterface>((resolve) => {
       resolve(cabinet);
+    });
+  }
+
+  async addPatient(patient: PatientInterface) {
+    this.http.post('/addPatient', {
+      patientName: patient.nom,
+      patientForname: patient.prenom,
+      patientNumber: patient.numeroSecuriteSociale,
+      patientSex: patient.sexe === sexeEnum.M ? 'M' : 'F',
+      patientBirthday: 'AAAA-MM-JJ',
+      patientFloor: patient.adresse.etage,
+      patientStreetNumber: patient.adresse.numero,
+      patientStreet: patient.adresse.rue,
+      patientPostalCode: patient.adresse.codePostal,
+      patientCity: patient.adresse.ville
+    });
+  }
+
+  public addPatientToInfirmier(infirmier: InfirmierInterface, patient: PatientInterface) {
+    this._cabinet.getValue().infirmiers.forEach(x => {
+      if (x === infirmier) {
+        console.log('oui');
+
+        x.patients.push(patient);
+      }
+    });
+  }
+
+  public deletePatientOfInfirmier(infirmier: InfirmierInterface, patient: PatientInterface) {
+    this._cabinet.getValue().infirmiers.map(inf => {
+      inf.patients.map((x, i) => {
+        if (x === patient) {
+          inf.patients.splice(i, 1);
+        }
+      });
+    });
+  }
+
+  async affectation(infirmier: InfirmierInterface, patient: PatientInterface) {
+    this.addPatientToInfirmier(infirmier, patient);
+    this.deletePatientOfInfirmier(infirmier, patient);
+    this._cabinet.next({
+      infirmiers: this._cabinet.getValue().infirmiers,
+      patientsNonAffectes: this._cabinet.getValue().patientsNonAffectes,
+      adresse: this._cabinet.getValue().adresse
+    });
+    this.affectationRequest(infirmier.id, patient);
+  }
+
+  private affectationRequest(infirmierId: string, patient: PatientInterface) {
+    this.http.post('/affectation', {
+      infirmier: infirmierId,
+      patient: patient.numeroSecuriteSociale
     });
   }
 

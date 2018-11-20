@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {CabinetMedicalService} from '../cabinet-medical.service';
 
 @Component({
   selector: 'app-patient',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./patient.component.css']
 })
 export class PatientComponent implements OnInit {
-
-  constructor() { }
+  @Input() private _patient;
+  constructor(private cabinetMedicalService: CabinetMedicalService) {
+  }
 
   ngOnInit() {
   }
 
+
+  get patient() {
+    return this._patient;
+  }
+
+  set patient(value) {
+    this._patient = value;
+  }
 }
