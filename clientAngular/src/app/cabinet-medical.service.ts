@@ -31,11 +31,11 @@ export class CabinetMedicalService {
     return this._cabinet.asObservable();
   }
 
-  private static getNodeValue(node: Element, tagName: string): string {
+  private getNodeValue(node: Element, tagName: string): string {
     return node.getElementsByTagName(tagName).length ? node.getElementsByTagName(tagName).item(0).textContent : null;
   }
 
-  private static stringToSexe(sexe: string): sexeEnum {
+  private stringToSexe(sexe: string): sexeEnum {
     switch (sexe) {
       case 'F' :
         return sexeEnum.F;
@@ -46,34 +46,48 @@ export class CabinetMedicalService {
     }
   }
 
-  private static getAdresse(adresse: Element): Adresse {
+  private getAdresse(adresse: Element): Adresse {
     return {
-      ville: CabinetMedicalService.getNodeValue(adresse, 'ville'),
-      codePostal: Number(CabinetMedicalService.getNodeValue(adresse, 'codePostal')),
-      rue: CabinetMedicalService.getNodeValue(adresse, 'rue'),
-      numero: CabinetMedicalService.getNodeValue(adresse, 'numéro'),
-      etage: CabinetMedicalService.getNodeValue(adresse, 'étage')
+      ville: this.getNodeValue(adresse, 'ville'),
+      codePostal: Number(this.getNodeValue(adresse, 'codePostal')),
+      rue: this.getNodeValue(adresse, 'rue'),
+      numero: this.getNodeValue(adresse, 'numéro'),
+      etage: this.getNodeValue(adresse, 'étage')
     };
   }
 
-  private static getAlonePatients(patients: Element, infirmiers: InfirmierInterface[]): PatientInterface[] {
-    return null;
-    // return Array.from(patients.getElementsByTagName('patient')).filter(x => isAlone(x,infirmiers));
-  }
 
-  private static getPatient(patient: Element): PatientInterface {
+  private getPatient(patient: Element): PatientInterface {
     return {
-      prenom: CabinetMedicalService.getNodeValue(patient, 'prénom'),
-      nom: CabinetMedicalService.getNodeValue(patient, 'nom'),
-      sexe: CabinetMedicalService.stringToSexe((CabinetMedicalService.getNodeValue(patient, 'sexe'))),
-      numeroSecuriteSociale: CabinetMedicalService.getNodeValue(patient, 'numéro'),
-      adresse: CabinetMedicalService.getAdresse(patient.getElementsByTagName('adresse').item(0))
+      prenom: this.getNodeValue(patient, 'prénom'),
+      nom: this.getNodeValue(patient, 'nom'),
+      sexe: this.stringToSexe((this.getNodeValue(patient, 'sexe'))),
+      numeroSecuriteSociale: this.getNodeValue(patient, 'numéro'),
+      adresse: this.getAdresse(patient.getElementsByTagName('adresse').item(0))
     };
   }
 
-  private static getDoc(text: string): Document {
+  private getDoc(text: string): Document {
     const parser: DOMParser = new DOMParser();
     return parser.parseFromString(text, 'application/xml');
+  }
+
+  private getPatientsAlone(patients: Element, infirmiers: InfirmierInterface[]): PatientInterface[] {
+    // return [];
+    const patientsInterface: PatientInterface[] = [];
+    const elem = Array.from(patients.getElementsByTagName('patient')).filter(patient => this.isAlone(patient, infirmiers));
+    console.log(elem);
+    elem.forEach(patient => {
+      patientsInterface.push(this.getPatient(patient));
+    });
+    return patientsInterface;
+    // return [];
+  }
+
+  private isAlone(patient: Element, infirmiers: InfirmierInterface[]): boolean {
+    return infirmiers.filter(infirmier => {
+      return infirmier.patients.filter(p => p.numeroSecuriteSociale === this.getPatient(patient).numeroSecuriteSociale).length === 1;
+    }).length === 0;
   }
 
 
@@ -81,11 +95,11 @@ export class CabinetMedicalService {
     const id = infirmier.getAttribute('id');
     return {
       id: id,
-      prenom: CabinetMedicalService.getNodeValue(infirmier, 'prénom'),
-      nom: CabinetMedicalService.getNodeValue(infirmier, 'nom'),
-      photo: CabinetMedicalService.getNodeValue(infirmier, 'photo'),
+      prenom: this.getNodeValue(infirmier, 'prénom'),
+      nom: this.getNodeValue(infirmier, 'nom'),
+      photo: this.getNodeValue(infirmier, 'photo'),
       patients: this.getPatientsInfirmier(patients, id),
-      adresse: CabinetMedicalService.getAdresse(infirmier.getElementsByTagName('adresse').item(0))
+      adresse: this.getAdresse(infirmier.getElementsByTagName('adresse').item(0))
     };
   }
 
@@ -102,7 +116,7 @@ export class CabinetMedicalService {
     const patientList: Array<Element> = Array.from(patients.getElementsByTagName('patient'));
     return patientList.reduce((acc, x) => {
       if (x.getElementsByTagName('visite').item(0).getAttribute('intervenant') === intervenant) {
-        acc.push(CabinetMedicalService.getPatient(x));
+        acc.push(this.getPatient(x));
       }
       return acc;
     }, []);
@@ -113,21 +127,30 @@ export class CabinetMedicalService {
     const infirmiers = this.getInfirmiers(doc.querySelector('infirmiers'), doc.querySelector('patients'));
     return {
       infirmiers: infirmiers,
-      patientsNonAffectes: CabinetMedicalService.getAlonePatients(doc.getElementsByTagName('patients').item(0), infirmiers),
-      adresse: CabinetMedicalService.getAdresse(doc.getElementsByTagName('adresse').item(0))
+      patientsNonAffectes: this.getPatientsAlone(doc.getElementsByTagName('patients').item(0), infirmiers),
+      adresse: this.getAdresse(doc.getElementsByTagName('adresse').item(0))
     };
   }
 
   async getData(url: string): Promise<CabinetInterface> {
     const res = await this.http.get(url, {responseType: 'text'}).toPromise();
-    const doc = CabinetMedicalService.getDoc(res.toString());
+    const doc = this.getDoc(res.toString());
     const cabinet = this.getCabinetInterface(doc);
     return new Promise<CabinetInterface>((resolve) => {
       resolve(cabinet);
     });
   }
 
+  private addPatientModel(patient: PatientInterface) {
+    this._cabinet.getValue().patientsNonAffectes.push(patient);
+  }
+
   async addPatient(patient: PatientInterface) {
+    this.addPatientModel(patient);
+    this.addPatientRequest(patient);
+  }
+
+  private addPatientRequest(patient: PatientInterface) {
     this.http.post('/addPatient', {
       patientName: patient.nom,
       patientForname: patient.prenom,
@@ -139,45 +162,48 @@ export class CabinetMedicalService {
       patientStreet: patient.adresse.rue,
       patientPostalCode: patient.adresse.codePostal,
       patientCity: patient.adresse.ville
-    });
+    }).subscribe();
   }
 
   public addPatientToInfirmier(infirmier: InfirmierInterface, patient: PatientInterface) {
-    this._cabinet.getValue().infirmiers.forEach(x => {
-      if (x === infirmier) {
-        console.log('oui');
-
-        x.patients.push(patient);
-      }
-    });
+    this._cabinet.getValue().infirmiers[this._cabinet.getValue().infirmiers.indexOf(infirmier)].patients.push(patient);
   }
 
-  public deletePatientOfInfirmier(infirmier: InfirmierInterface, patient: PatientInterface) {
-    this._cabinet.getValue().infirmiers.map(inf => {
-      inf.patients.map((x, i) => {
-        if (x === patient) {
-          inf.patients.splice(i, 1);
-        }
-      });
-    });
+  private getIntervenant(patient: PatientInterface): InfirmierInterface {
+    return this._cabinet.getValue().infirmiers.filter(inf => {
+      return inf.patients.filter(p => p === patient).length === 1;
+    })[0];
+  }
+
+  public deletePatientOfInfirmier(patient: PatientInterface) {
+    const intervenant = this.getIntervenant(patient);
+    const indexIntervenant = this._cabinet.getValue().infirmiers.indexOf(intervenant);
+    const indexPatient = this._cabinet.getValue().infirmiers[indexIntervenant].patients.indexOf(patient);
+    this._cabinet.getValue().infirmiers[indexIntervenant].patients.splice(indexPatient, 1);
+  }
+
+  private affectationModel(infirmier: InfirmierInterface, patient: PatientInterface) {
+    this.deletePatientOfInfirmier(patient);
+    this.addPatientToInfirmier(infirmier, patient);
   }
 
   async affectation(infirmier: InfirmierInterface, patient: PatientInterface) {
-    this.addPatientToInfirmier(infirmier, patient);
-    this.deletePatientOfInfirmier(infirmier, patient);
-    this._cabinet.next({
-      infirmiers: this._cabinet.getValue().infirmiers,
-      patientsNonAffectes: this._cabinet.getValue().patientsNonAffectes,
-      adresse: this._cabinet.getValue().adresse
-    });
+    this.affectationModel(infirmier, patient);
     this.affectationRequest(infirmier.id, patient);
+  }
+
+
+  async desaffectation(patient: PatientInterface) {
+    this.deletePatientOfInfirmier(patient);
+    this._cabinet.getValue().patientsNonAffectes.push(patient);
+    this.affectationRequest('', patient);
   }
 
   private affectationRequest(infirmierId: string, patient: PatientInterface) {
     this.http.post('/affectation', {
       infirmier: infirmierId,
       patient: patient.numeroSecuriteSociale
-    });
+    }).subscribe();
   }
 
 }
