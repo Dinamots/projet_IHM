@@ -14,7 +14,10 @@ export class SecretaryComponent implements OnInit {
   private _cabinet: CabinetInterface;
 
   constructor(private cabinetMedicalService: CabinetMedicalService) {
-    this.cabinetMedicalService.cabinet.subscribe(cabinet => this._cabinet = cabinet);
+    this.cabinetMedicalService.cabinet.subscribe(cabinet => {
+      console.log('ici');
+      this._cabinet = cabinet;
+    });
   }
 
   ngOnInit() {

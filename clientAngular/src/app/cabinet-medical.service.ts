@@ -175,26 +175,33 @@ export class CabinetMedicalService {
     })[0];
   }
 
-  public deletePatientOfInfirmier(patient: PatientInterface) {
+  public deletePatientOfInfirmier(patient: PatientInterface, indexInfirmier: number) {
+    const indexPatient = this._cabinet.getValue().infirmiers[indexInfirmier].patients.indexOf(patient);
+    this._cabinet.getValue().infirmiers[indexInfirmier].patients.splice(indexPatient, 1);
+  }
+
+  public deletePatient(patient: PatientInterface) {
     const intervenant = this.getIntervenant(patient);
     const indexIntervenant = this._cabinet.getValue().infirmiers.indexOf(intervenant);
     const indexPatient = this._cabinet.getValue().infirmiers[indexIntervenant].patients.indexOf(patient);
     this._cabinet.getValue().infirmiers[indexIntervenant].patients.splice(indexPatient, 1);
+    console.log(this._cabinet.getValue().infirmiers[indexIntervenant].patients);
   }
 
   private affectationModel(infirmier: InfirmierInterface, patient: PatientInterface) {
-    this.deletePatientOfInfirmier(patient);
+    this.deletePatient(patient);
     this.addPatientToInfirmier(infirmier, patient);
   }
 
   async affectation(infirmier: InfirmierInterface, patient: PatientInterface) {
     this.affectationModel(infirmier, patient);
     this.affectationRequest(infirmier.id, patient);
+    this._cabinet.next(this._cabinet.getValue());
   }
 
 
   async desaffectation(patient: PatientInterface) {
-    this.deletePatientOfInfirmier(patient);
+    this.deletePatient(patient);
     this._cabinet.getValue().patientsNonAffectes.push(patient);
     this.affectationRequest('', patient);
   }
@@ -204,6 +211,14 @@ export class CabinetMedicalService {
       infirmier: infirmierId,
       patient: patient.numeroSecuriteSociale
     }).subscribe();
+  }
+
+  public getInfirmierByIndex(index: number): InfirmierInterface {
+    return this._cabinet.getValue().infirmiers[index];
+  }
+
+  public getPatientOfInfirmierByIndex(index: number, infirmierIndex: number): PatientInterface {
+    return this._cabinet.getValue().infirmiers[infirmierIndex].patients[index];
   }
 
 }

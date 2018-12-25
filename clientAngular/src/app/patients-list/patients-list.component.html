@@ -2,7 +2,8 @@
   cdkDropList
   class="patient-list"
   (cdkDropListDropped)="drop($event)"
-  [cdkDropListConnectedTo]="getDropListConnectedTo()">
+  [cdkDropListConnectedTo]="getDropListConnectedTo()"
+>
   <div *ngFor="let patient of patients">
     <mat-list-item cdkDrag>
       <app-patient
