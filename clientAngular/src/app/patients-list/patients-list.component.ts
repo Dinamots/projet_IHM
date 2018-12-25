@@ -15,7 +15,7 @@ export class PatientsListComponent implements OnInit {
   @Input() private _patients: PatientInterface[];
   @Input() private _infirmierIndex: number;
   @Input() private _infirmiersLength: number;
-
+  @Input() private _isUnaffected = false;
 
   constructor(private cabinetMedicalService: CabinetMedicalService) {
   }
@@ -48,23 +48,29 @@ export class PatientsListComponent implements OnInit {
   }
 
   getInfirmier(index: number): InfirmierInterface {
-    return this.cabinetMedicalService.getInfirmierByIndex(index);
+    const infirmier = this.cabinetMedicalService.getInfirmierByIndex(index);
+    return infirmier === undefined ? null : infirmier;
   }
 
   getPatient(index: number, infirmierIndex: number): PatientInterface {
-    return this.cabinetMedicalService.getPatientOfInfirmierByIndex(index, infirmierIndex);
+    return infirmierIndex !== -1
+      ? this.cabinetMedicalService.getPatientOfInfirmierByIndex(index, infirmierIndex)
+      : this.cabinetMedicalService.getUnaffectedPatientByIndex(index);
   }
 
   drop(event: CdkDragDrop<any>) {
     console.log(event);
-
     const previousInfirmierIndex = parseInt(event.previousContainer.id.match(/^\d+|\d+\b|\d+(?=\w)/g)[0], 10) - 1;
     const currentInfirmierIndex = parseInt(event.container.id.match(/^\d+|\d+\b|\d+(?=\w)/g)[0], 10) - 1;
     const previousInfirmier = this.getInfirmier(previousInfirmierIndex);
     const patient = this.getPatient(event.previousIndex, previousInfirmierIndex);
     const currentInfirmier = this.getInfirmier(currentInfirmierIndex);
-    this.cabinetMedicalService.affectation(currentInfirmier, patient);
-
+    if (currentInfirmier === undefined) {
+      this.cabinetMedicalService.desaffectation(patient);
+    } else {
+      this.cabinetMedicalService.affectation(currentInfirmier, patient);
+    }
+    console.log(event.container.data);
 
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -78,7 +84,7 @@ export class PatientsListComponent implements OnInit {
 
   getDropListConnectedTo() {
     const connected = [];
-    for (let i = 1; i <= this._infirmiersLength; i++) {
+    for (let i = 0; i <= this._infirmiersLength; i++) {
       if (this._infirmierIndex !== i - 1) {
         connected.push(`cdk-drop-list-${i}`);
       }

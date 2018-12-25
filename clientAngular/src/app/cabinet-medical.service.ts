@@ -196,7 +196,7 @@ export class CabinetMedicalService {
   async affectation(infirmier: InfirmierInterface, patient: PatientInterface) {
     // this.affectationModel(infirmier, patient);
     // this.deletePatient(patient);
-    this.affectationRequest(infirmier.id, patient);
+    this.affectationRequest(infirmier !== null ? infirmier.id : '', patient);
     console.log(this._cabinet.getValue());
   }
 
@@ -220,6 +220,10 @@ export class CabinetMedicalService {
 
   public getPatientOfInfirmierByIndex(index: number, infirmierIndex: number): PatientInterface {
     return this._cabinet.getValue().infirmiers[infirmierIndex].patients[index];
+  }
+
+  public getUnaffectedPatientByIndex(index: number): PatientInterface {
+    return this._cabinet.getValue().patientsNonAffectes[index];
   }
 
 }
