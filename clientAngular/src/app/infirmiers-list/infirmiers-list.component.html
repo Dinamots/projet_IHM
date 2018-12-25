@@ -1,0 +1,9 @@
+<mat-list>
+  <ng-container *ngFor="let infirmier of infirmiers; let i = index">
+    <app-infirmier
+      [_infirmier]="infirmier"
+      [_infirmierIndex]="i"
+      [_infirmiersLength]="infirmiers.length"
+    ></app-infirmier>
+  </ng-container>
+</mat-list>

@@ -1,9 +1,6 @@
-<ul>
-  <li>{{infirmier.id}}</li>
-  <li>{{infirmier.prenom}}</li>
-  <li>{{infirmier.nom}}</li>
-  <li>{{infirmier.photo}}</li>
-  <ul *ngFor="let patient of infirmier.patients">
-    <app-patient [_patient]="patient"></app-patient>
-  </ul>
-</ul>
+<mat-list-item> {{infirmier.prenom}} {{infirmier.nom}} </mat-list-item>
+<app-patients-list
+  [_patients]="infirmier.patients"
+  [_infirmierIndex]="infirmierIndex"
+  [_infirmiersLength]="infirmiersLength"
+></app-patients-list>

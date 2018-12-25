@@ -8,10 +8,12 @@ import {CabinetMedicalService} from '../cabinet-medical.service';
 })
 export class PatientComponent implements OnInit {
   @Input() private _patient;
+
   constructor(private cabinetMedicalService: CabinetMedicalService) {
   }
 
   ngOnInit() {
+    console.log(this.patient);
   }
 
 
