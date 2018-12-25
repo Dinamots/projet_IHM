@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {PatientInterface} from '../dataInterfaces/patient';
 import {CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {CabinetMedicalService} from '../cabinet-medical.service';
@@ -11,9 +11,11 @@ import {fadeInItems} from '@angular/material';
   styleUrls: ['./patients-list.component.css']
 })
 export class PatientsListComponent implements OnInit {
+
   @Input() private _patients: PatientInterface[];
   @Input() private _infirmierIndex: number;
   @Input() private _infirmiersLength: number;
+
 
   constructor(private cabinetMedicalService: CabinetMedicalService) {
   }
@@ -61,7 +63,17 @@ export class PatientsListComponent implements OnInit {
     const previousInfirmier = this.getInfirmier(previousInfirmierIndex);
     const patient = this.getPatient(event.previousIndex, previousInfirmierIndex);
     const currentInfirmier = this.getInfirmier(currentInfirmierIndex);
-    // this.cabinetMedicalService.affectation(currentInfirmier, patient);
+    this.cabinetMedicalService.affectation(currentInfirmier, patient);
+
+
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
   }
 
   getDropListConnectedTo() {

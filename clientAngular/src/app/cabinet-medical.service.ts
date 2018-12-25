@@ -194,9 +194,10 @@ export class CabinetMedicalService {
   }
 
   async affectation(infirmier: InfirmierInterface, patient: PatientInterface) {
-    this.affectationModel(infirmier, patient);
+    // this.affectationModel(infirmier, patient);
+    // this.deletePatient(patient);
     this.affectationRequest(infirmier.id, patient);
-    this._cabinet.next(this._cabinet.getValue());
+    console.log(this._cabinet.getValue());
   }
 
 
