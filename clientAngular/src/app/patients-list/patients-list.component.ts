@@ -53,28 +53,17 @@ export class PatientsListComponent implements OnInit {
   }
 
   getPatient(index: number, infirmierIndex: number): PatientInterface {
+    console.log('ici');
+    console.log(index);
+    console.log('infirmierIndex == ' + infirmierIndex);
+    console.log(infirmierIndex);
     return infirmierIndex !== -1
       ? this.cabinetMedicalService.getPatientOfInfirmierByIndex(index, infirmierIndex)
       : this.cabinetMedicalService.getUnaffectedPatientByIndex(index);
   }
 
-  drop(event: CdkDragDrop<any>) {
-    console.log(event);
-    const previousInfirmierIndex = parseInt(event.previousContainer.id.match(/^\d+|\d+\b|\d+(?=\w)/g)[0], 10) - 1;
-    const currentInfirmierIndex = parseInt(event.container.id.match(/^\d+|\d+\b|\d+(?=\w)/g)[0], 10) - 1;
-    const previousInfirmier = this.getInfirmier(previousInfirmierIndex);
-    const patient = this.getPatient(event.previousIndex, previousInfirmierIndex);
-    const currentInfirmier = this.getInfirmier(currentInfirmierIndex);
-    if (currentInfirmier === undefined) {
-      this.cabinetMedicalService.desaffectation(patient);
-    } else {
-      this.cabinetMedicalService.affectation(currentInfirmier, patient);
-    }
-    console.log(event.container.data);
-
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
+  changeModelOnDrop(event: CdkDragDrop<any>) {
+    if (event.previousContainer !== event.container) {
       transferArrayItem(event.previousContainer.data,
         event.container.data,
         event.previousIndex,
@@ -82,18 +71,46 @@ export class PatientsListComponent implements OnInit {
     }
   }
 
+  getInfirmierIndex(id): number {
+    const string = id.match(/^\d+|\d+\b|\d+(?=\w)/g);
+    return string !== null ? parseInt(string[0], 10) : -1;
+  }
+
+  drop(event: CdkDragDrop<any>) {
+    if (event.container === event.previousContainer) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      return;
+    }
+    
+    const previousInfirmierIndex = this.getInfirmierIndex(event.previousContainer.id);
+    const currentInfirmierIndex = this.getInfirmierIndex(event.container.id);
+    const patient = this.getPatient(event.previousIndex, previousInfirmierIndex);
+    const currentInfirmier = this.getInfirmier(currentInfirmierIndex);
+
+    if (currentInfirmier === null) {
+      this.cabinetMedicalService.desaffectation(patient);
+    } else {
+      this.cabinetMedicalService.affectation(currentInfirmier, patient);
+      this.changeModelOnDrop(event);
+    }
+
+  }
+
   getDropListConnectedTo() {
     const connected = [];
     for (let i = 0; i <= this._infirmiersLength; i++) {
       if (this._infirmierIndex !== i - 1) {
-        connected.push(`cdk-drop-list-${i}`);
+        connected.push(`patientList-${i}`);
       }
 
     }
+
+    connected.push(`unaffectedList`);
+
     return connected;
   }
 
   getDropListId() {
-    return `patient-${this._infirmierIndex}`;
+    return this._isUnaffected ? 'unaffectedList' : `patientList-${this._infirmierIndex}`;
   }
 }

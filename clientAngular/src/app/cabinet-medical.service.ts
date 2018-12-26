@@ -203,6 +203,7 @@ export class CabinetMedicalService {
 
   async desaffectation(patient: PatientInterface) {
     this.deletePatient(patient);
+    console.log(patient);
     this._cabinet.getValue().patientsNonAffectes.push(patient);
     this.affectationRequest('', patient);
   }

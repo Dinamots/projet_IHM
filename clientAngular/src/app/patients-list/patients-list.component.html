@@ -1,6 +1,7 @@
 <mat-nav-list
   cdkDropList
   class="patient-list"
+  [id]="getDropListId()"
   [cdkDropListData]="patients"
   (cdkDropListDropped)="drop($event)"
   [cdkDropListConnectedTo]="getDropListConnectedTo()"
