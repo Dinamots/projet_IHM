@@ -8,7 +8,7 @@ import {InfirmierComponent} from './infirmier/infirmier.component';
 import {PatientComponent} from './patient/patient.component';
 import {InfirmiersListComponent} from './infirmiers-list/infirmiers-list.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatGridListModule, MatListModule} from '@angular/material';
+import {MatBadgeModule, MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatGridListModule, MatListModule} from '@angular/material';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {PatientsListComponent} from './patients-list/patients-list.component';
 
@@ -22,6 +22,7 @@ import {PatientsListComponent} from './patients-list/patients-list.component';
     PatientsListComponent,
   ],
   imports: [
+    MatBadgeModule,
     MatFormFieldModule,
     DragDropModule,
     MatListModule,
