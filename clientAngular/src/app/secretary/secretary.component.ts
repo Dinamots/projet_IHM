@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {CabinetMedicalService} from '../cabinet-medical.service';
 import {CabinetInterface} from '../dataInterfaces/cabinet';
 import {HttpClient} from '@angular/common/http';
+import {sexeEnum} from '../dataInterfaces/sexe';
+import {Adresse} from '../dataInterfaces/adresse';
 
 @Component({
   selector: 'app-secretary',
@@ -12,7 +14,10 @@ export class SecretaryComponent implements OnInit {
   private _cabinet: CabinetInterface;
 
   constructor(private cabinetMedicalService: CabinetMedicalService) {
-    this.cabinetMedicalService.cabinet.subscribe(cabinet => this._cabinet = cabinet);
+    this.cabinetMedicalService.cabinet.subscribe(cabinet => {
+      console.log('ici');
+      this._cabinet = cabinet;
+    });
   }
 
   ngOnInit() {
@@ -28,10 +33,30 @@ export class SecretaryComponent implements OnInit {
   }
 
   public affectation() {
-    let infirmier = this._cabinet.infirmiers[0];
-    console.log(infirmier);
-    let patient = this._cabinet.infirmiers[1].patients[0];
-    console.log(patient);
+    const infirmier = this._cabinet.infirmiers[0];
+    const patient = this._cabinet.infirmiers[1].patients[0];
     this.cabinetMedicalService.affectation(infirmier, patient);
+  }
+
+  public desaffectation() {
+    const patient = this._cabinet.infirmiers[1].patients[0];
+    this.cabinetMedicalService.desaffectation(patient);
+  }
+
+  public addPatient() {
+    const patient = {
+      prenom: 'tibox',
+      nom: 'l\'asticox',
+      sexe: sexeEnum.M,
+      numeroSecuriteSociale: '193061305545313',
+      adresse: {
+        ville: 'Saint genis',
+        codePostal: 34981,
+        rue: 'rue de coulondre',
+        numero: '408',
+        etage: ''
+      },
+    };
+    this.cabinetMedicalService.addPatient(patient);
   }
 }
