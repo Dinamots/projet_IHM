@@ -77,6 +77,7 @@ export class PatientsListComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<any>) {
+    console.log(event);
     if (event.container === event.previousContainer) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
       return;
@@ -99,7 +100,7 @@ export class PatientsListComponent implements OnInit {
   getDropListConnectedTo() {
     const connected = [];
     for (let i = 0; i <= this._infirmiersLength; i++) {
-      if (this._infirmierIndex !== i - 1) {
+      if (this._infirmierIndex !== i) {
         connected.push(`patientList-${i}`);
       }
 
