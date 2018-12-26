@@ -81,7 +81,7 @@ export class PatientsListComponent implements OnInit {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
       return;
     }
-    
+
     const previousInfirmierIndex = this.getInfirmierIndex(event.previousContainer.id);
     const currentInfirmierIndex = this.getInfirmierIndex(event.container.id);
     const patient = this.getPatient(event.previousIndex, previousInfirmierIndex);

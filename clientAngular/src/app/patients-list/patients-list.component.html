@@ -6,14 +6,12 @@
   (cdkDropListDropped)="drop($event)"
   [cdkDropListConnectedTo]="getDropListConnectedTo()"
 >
-  <div>
-    <mat-list-item *ngFor="let patient of patients" cdkDrag>
+  <div class="patient-box">
+    <mat-list-item *ngFor="let patient of patients ; let i = index" cdkDrag>
+      <mat-divider *ngIf="i != patients.length - 1 "></mat-divider>
       <app-patient
         [_patient]="patient"
       ></app-patient>
-    </mat-list-item>
-    <mat-list-item *ngIf="patients.length === 0">
-      Empty
     </mat-list-item>
   </div>
 </mat-nav-list>
