@@ -1,1 +1,1 @@
-export enum sexeEnum {M, F}
+export enum sexeEnum {M, F, A}

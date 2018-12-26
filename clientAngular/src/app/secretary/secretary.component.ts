@@ -4,6 +4,8 @@ import {CabinetInterface} from '../dataInterfaces/cabinet';
 import {HttpClient} from '@angular/common/http';
 import {sexeEnum} from '../dataInterfaces/sexe';
 import {Adresse} from '../dataInterfaces/adresse';
+import {DialogAddPatientComponent} from '../dialog-add-patient/dialog-add-patient.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-secretary',
@@ -13,10 +15,26 @@ import {Adresse} from '../dataInterfaces/adresse';
 export class SecretaryComponent implements OnInit {
   private _cabinet: CabinetInterface;
 
-  constructor(private cabinetMedicalService: CabinetMedicalService) {
+  constructor(private cabinetMedicalService: CabinetMedicalService, public dialog: MatDialog) {
     this.cabinetMedicalService.cabinet.subscribe(cabinet => {
       console.log('ici');
       this._cabinet = cabinet;
+    });
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogAddPatientComponent, {
+      width: '250px',
+      data: {
+        adresse: {}
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        this.cabinetMedicalService.newPatient(result);
+      }
+      console.log('The dialog was closed');
     });
   }
 

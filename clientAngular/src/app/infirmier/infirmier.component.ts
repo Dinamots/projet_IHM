@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CabinetMedicalService} from '../cabinet-medical.service';
 import {InfirmierInterface} from '../dataInterfaces/infirmier';
 
 @Component({
@@ -12,7 +11,8 @@ export class InfirmierComponent implements OnInit {
   @Input() private _infirmierIndex: number;
   @Input() private _infirmiersLength: number;
 
-  constructor(private cabinetMedicalService: CabinetMedicalService) {
+  constructor() {
+
   }
 
   ngOnInit() {

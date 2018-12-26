@@ -193,6 +193,16 @@ export class CabinetMedicalService {
     this.addPatientToInfirmier(infirmier, patient);
   }
 
+  async newPatient(patient: PatientInterface) {
+    this._cabinet.next({
+      infirmiers: this._cabinet.getValue().infirmiers,
+      patientsNonAffectes: [...this._cabinet.getValue().patientsNonAffectes, patient],
+      adresse: this._cabinet.getValue().adresse
+    });
+    this.affectationRequest('', patient);
+
+  }
+
   async affectation(infirmier: InfirmierInterface, patient: PatientInterface) {
     // this.affectationModel(infirmier, patient);
     // this.deletePatient(patient);

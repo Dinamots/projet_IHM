@@ -1,7 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+div.main-container {
+  display: flex;
+}
 
-.patient-list {
+
+.main-container > * {
+  flex:1;
+  margin: 20px;
+}
+
+div.list {
+  border: solid 1px #000000;
+  min-height: 50px;
+}
+
+.mat-badge{
+  display: inline-block;
+}
+
+h2.mat-h2 {
+  margin-left: 25%;
+}
+
+mat-toolbar span {
+  margin: auto;
+}
+
+button.add-patient {
+  margin-left: 20px;
+}
+
+/*.patient-list {
   margin-left: 30px;
   border: solid 1px #ccc;
   min-height: 60px;
@@ -57,3 +87,4 @@
 .patient-list.cdk-drop-list-dragging .patient-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
+*/

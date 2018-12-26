@@ -1,0 +1,79 @@
+<div mat-dialog-content>
+  <p>Ajout d'un nouveau patient</p>
+  <mat-form-field>
+    <input
+      matInput
+      [(ngModel)]="data.nom"
+      placeholder="Nom"
+      [formControl]="nomControl"
+      required>
+    <mat-error *ngIf="nomControl.invalid">{{getErrorMessage(nomControl)}}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      [(ngModel)]="data.prenom"
+      placeholder="Prenom"
+      [formControl]="prenomControl"
+      required>
+    <mat-error *ngIf="prenomControl.invalid">{{getErrorMessage(prenomControl)}}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Sexe">
+      <mat-option *ngFor="let s of sexe" [value]="s" (click)="data.sexe = toSexeEnum(s)" required> {{s}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      [(ngModel)]="data.adresse.codePostal"
+      placeholder="Code Postal"
+      [formControl]="codePostalControl"
+      required>
+    <mat-error *ngIf="codePostalControl.invalid">{{getErrorMessage(codePostalControl)}}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      [(ngModel)]="data.adresse.etage"
+      placeholder="Etage">
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      [(ngModel)]="data.adresse.numero"
+      placeholder="Numero d'étage">
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      [(ngModel)]="data.adresse.rue"
+      placeholder="Rue">
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      [(ngModel)]="data.adresse.ville"
+      [formControl]="villeControl"
+      placeholder="Ville" required>
+    <mat-error *ngIf="villeControl.invalid">{{getErrorMessage(villeControl)}}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      [(ngModel)]="data.numeroSecuriteSociale"
+      placeholder="Numero de securite sociale"
+      [formControl]="numeroControl"
+      required>
+    <mat-error *ngIf="numeroControl.invalid">{{getErrorMessage(numeroControl)}}</mat-error>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Quit</button>
+  <button
+    *ngIf="!prenomControl.invalid && !nomControl.invalid && !numeroControl.invalid"
+    mat-button
+    [mat-dialog-close]="data">Ok
+  </button>
+</div>
