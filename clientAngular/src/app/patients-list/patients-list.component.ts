@@ -4,6 +4,7 @@ import {CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem} from '@ang
 import {CabinetMedicalService} from '../cabinet-medical.service';
 import {InfirmierInterface} from '../dataInterfaces/infirmier';
 import {fadeInItems} from '@angular/material';
+import {catchError} from 'rxjs/operators';
 
 @Component({
   selector: 'app-patients-list',
@@ -53,10 +54,6 @@ export class PatientsListComponent implements OnInit {
   }
 
   getPatient(index: number, infirmierIndex: number): PatientInterface {
-    console.log('ici');
-    console.log(index);
-    console.log('infirmierIndex == ' + infirmierIndex);
-    console.log(infirmierIndex);
     return infirmierIndex !== -1
       ? this.cabinetMedicalService.getPatientOfInfirmierByIndex(index, infirmierIndex)
       : this.cabinetMedicalService.getUnaffectedPatientByIndex(index);
@@ -71,17 +68,23 @@ export class PatientsListComponent implements OnInit {
     }
   }
 
+  undoChangeOnDrop(event: CdkDragDrop<any>) {
+    if (event.previousContainer !== event.container) {
+      transferArrayItem(event.container.data,
+        event.previousContainer.data,
+        event.currentIndex,
+        event.previousIndex);
+    }
+  }
+
+
   getInfirmierIndex(id): number {
     const string = id.match(/^\d+|\d+\b|\d+(?=\w)/g);
-    return string !== null ? parseInt(string[0], 10) : -1;
+    return string !== null ? +string[0] : -1;
   }
 
   drop(event: CdkDragDrop<any>) {
     console.log(event);
-    if (event.container === event.previousContainer) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-      return;
-    }
 
     const previousInfirmierIndex = this.getInfirmierIndex(event.previousContainer.id);
     const currentInfirmierIndex = this.getInfirmierIndex(event.container.id);
@@ -89,11 +92,19 @@ export class PatientsListComponent implements OnInit {
     const currentInfirmier = this.getInfirmier(currentInfirmierIndex);
 
     if (currentInfirmier === null) {
-      this.cabinetMedicalService.desaffectation(patient);
-    } else {
-      this.cabinetMedicalService.affectation(currentInfirmier, patient);
       this.changeModelOnDrop(event);
+      this.cabinetMedicalService.desaffectation(patient)
+        .catch(error => {
+          this.undoChangeOnDrop(event);
+        });
+    } else {
+      this.changeModelOnDrop(event);
+      this.cabinetMedicalService.affectation(currentInfirmier, patient)
+        .catch(error => {
+          this.undoChangeOnDrop(event);
+        });
     }
+    // this.changeModelOnDrop(event);
 
   }
 

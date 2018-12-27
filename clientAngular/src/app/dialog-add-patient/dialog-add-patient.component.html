@@ -1,70 +1,87 @@
 <div mat-dialog-content>
-  <p>Ajout d'un nouveau patient</p>
+  <h4 *ngIf="create" class="mat-h4">Ajout d'un nouveau patient</h4>
+  <h4 *ngIf="!create" class="mat-h4">Mise à jour d'un patient</h4>
   <mat-form-field>
     <input
       matInput
-      [(ngModel)]="data.nom"
       placeholder="Nom"
       [formControl]="nomControl"
-      required>
+      (change)="data.nom = getChange(nomControl,data.nom,$event.target.value)"
+      required
+    >
     <mat-error *ngIf="nomControl.invalid">{{getErrorMessage(nomControl)}}</mat-error>
   </mat-form-field>
   <mat-form-field>
     <input
       matInput
-      [(ngModel)]="data.prenom"
       placeholder="Prenom"
       [formControl]="prenomControl"
-      required>
+      (change)="data.prenom = getChange(prenomControl,data.prenom,$event.target.value)"
+      required
+    >
     <mat-error *ngIf="prenomControl.invalid">{{getErrorMessage(prenomControl)}}</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <mat-select placeholder="Sexe">
-      <mat-option *ngFor="let s of sexe" [value]="s" (click)="data.sexe = toSexeEnum(s)" required> {{s}}</mat-option>
+    <mat-select placeholder="Sexe" [(value)]="this.selectedValue" required>
+      <mat-option
+        *ngFor="let s of sexe"
+        [value]="s"
+        (click)="test($event)"
+      > {{s}} </mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field>
     <input
       matInput
-      [(ngModel)]="data.adresse.codePostal"
       placeholder="Code Postal"
       [formControl]="codePostalControl"
-      required>
+      (change)="data.adresse.codePostal = getChange(codePostalControl,data.adresse.codePostal,$event.target.value)"
+      required
+    >
     <mat-error *ngIf="codePostalControl.invalid">{{getErrorMessage(codePostalControl)}}</mat-error>
   </mat-form-field>
   <mat-form-field>
     <input
       matInput
-      [(ngModel)]="data.adresse.etage"
-      placeholder="Etage">
+      placeholder="Etage"
+      [formControl]="etageControl"
+      (change)="data.adresse.etage = getChange(etageControl,data.adresse.etage,$event.target.value)"
+    >
   </mat-form-field>
   <mat-form-field>
     <input
       matInput
-      [(ngModel)]="data.adresse.numero"
-      placeholder="Numero d'étage">
+      placeholder="Numero rue"
+      [formControl]="numeroRueControl"
+      (change)="data.adresse.numero = getChange(numeroRueControl,data.adresse.numero,$event.target.value)"
+    >
   </mat-form-field>
   <mat-form-field>
     <input
       matInput
-      [(ngModel)]="data.adresse.rue"
-      placeholder="Rue">
+      placeholder="Rue"
+      [formControl]="rueControl"
+      (change)="data.adresse.rue = getChange(rueControl,data.adresse.rue,$event.target.value)"
+    >
   </mat-form-field>
   <mat-form-field>
     <input
       matInput
-      [(ngModel)]="data.adresse.ville"
       [formControl]="villeControl"
-      placeholder="Ville" required>
+      placeholder="Ville"
+      required
+      (change)="data.adresse.ville = getChange(villeControl,data.adresse.ville,$event.target.value)"
+    >
     <mat-error *ngIf="villeControl.invalid">{{getErrorMessage(villeControl)}}</mat-error>
   </mat-form-field>
   <mat-form-field>
     <input
       matInput
-      [(ngModel)]="data.numeroSecuriteSociale"
       placeholder="Numero de securite sociale"
       [formControl]="numeroControl"
-      required>
+      required
+      (change)="data.numeroSecuriteSociale = getChange(numeroRueControl,data.numeroSecuriteSociale,$event.target.value)"
+    >
     <mat-error *ngIf="numeroControl.invalid">{{getErrorMessage(numeroControl)}}</mat-error>
   </mat-form-field>
 </div>
@@ -72,8 +89,9 @@
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Quit</button>
   <button
-    *ngIf="!prenomControl.invalid && !nomControl.invalid && !numeroControl.invalid"
+    *ngIf="isValid()"
     mat-button
-    [mat-dialog-close]="data">Ok
+    [mat-dialog-close]="data"
+  >Ok
   </button>
 </div>

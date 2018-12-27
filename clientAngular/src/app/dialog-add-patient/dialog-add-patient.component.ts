@@ -15,25 +15,50 @@ export class DialogAddPatientComponent implements OnInit {
     'Féminin',
     'Autre'
   ];
-  public codePostalControl: FormControl = new FormControl('', [Validators.required]);
-  public villeControl: FormControl = new FormControl('', [Validators.required]);
-  public nomControl: FormControl = new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]+[ \\-\']?[[a-zA-Z]+[ \\-\']?]*[a-zA-Z]+$')]);
-  public prenomControl: FormControl = new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]+[ \\-\']?[[a-zA-Z]+[ \\-\']?]*[a-zA-Z]+$')]);
-  public numeroControl: FormControl = new FormControl('', [Validators.required, Validators.pattern('^[12][0-9]{2}[0-1][0-9](2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}[0-9]{2}$')]);
+  public create: boolean = this.data.nom === undefined;
+  public selectedValue = this.toString(this.data.sexe);
+  public codePostalControl: FormControl = new FormControl(this.data.adresse.codePostal, [Validators.required]);
+  public villeControl: FormControl = new FormControl(this.data.adresse.ville, [Validators.required]);
+  public nomControl: FormControl = new FormControl(this.data.nom, [Validators.required]);
+  public prenomControl: FormControl = new FormControl(this.data.prenom, [Validators.required]);
+  public numeroControl: FormControl = new FormControl(
+    this.data.numeroSecuriteSociale,
+    [Validators.required, Validators.pattern('^[12][0-9]{2}[0-1][0-9](2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}[0-9]{2}$')]
+  );
+  public rueControl: FormControl = new FormControl(this.data.adresse.rue);
+  public etageControl: FormControl = new FormControl(this.data.adresse.etage);
+  public numeroRueControl: FormControl = new FormControl(this.data.adresse.numero);
+  public sexeControl: FormControl = new FormControl(this.data.sexe, [Validators.required]);
+
 
   constructor(public dialogRef: MatDialogRef<DialogAddPatientComponent>,
               @Inject(MAT_DIALOG_DATA) public data: PatientInterface) {
-    console.log(this.sexe);
   }
 
   ngOnInit() {
   }
 
+  test(e) {
+    console.log(e);
+    this.data.sexe = this.toSexeEnum(e.target.textContent);
+  }
+
+  toString(sexe: sexeEnum): string {
+    switch (sexe) {
+      case sexeEnum.F:
+        return this.sexe[1];
+      case sexeEnum.M:
+        return this.sexe[0];
+      default:
+        return this.sexe[2];
+    }
+  }
+
   toSexeEnum(str: string): sexeEnum {
-    switch (str) {
-      case 'Masculin':
+    switch (str.trim()) {
+      case this.sexe[0]:
         return sexeEnum.M;
-      case 'Feminin' :
+      case this.sexe[1] :
         return sexeEnum.F;
       default:
         return sexeEnum.A;
@@ -46,8 +71,28 @@ export class DialogAddPatientComponent implements OnInit {
         '';
   }
 
+  getChange(control: FormControl, dataVal: any, value: any) {
+    if (control.valid) {
+      return value;
+    } else {
+      return dataVal;
+    }
+  }
+
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  isValid() {
+    return this.nomControl.valid
+      && this.prenomControl.valid
+      && this.codePostalControl.valid
+      && this.etageControl
+      && this.numeroRueControl
+      && this.rueControl
+      && this.villeControl
+      && this.sexeControl
+      && this.numeroControl;
   }
 
 }
