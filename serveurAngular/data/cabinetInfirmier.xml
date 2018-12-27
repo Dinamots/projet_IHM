@@ -95,7 +95,7 @@
                 (Pansement de brûlure étendue ou de plaie chimique ou thermique étendue,
                     sur une surface supérieure à 5 % de la surface corporelle.....)
                 -->
-                <visite date="2014-12-08" intervenant="">
+                <visite date="2014-12-08" intervenant="001">
                     <acte id="300"/>               
                 </visite>
                 
@@ -143,7 +143,7 @@
                 Le jeune Xavier est en cours de désensibilation alergique.
                 Il doit recevoir tous les jours, l'injection de plusieurs allergènes, etc.
                 -->
-                <visite date="2014-12-08" intervenant="">
+                <visite date="2014-12-08" intervenant="003">
                     <acte id="111"/>               
                 </visite>
                 
@@ -162,10 +162,10 @@
                 <ville>Montbonnot-Saint-Martin</ville>
                 <codePostal>38330</codePostal>
             </adresse>
-                <visite date="2014-12-08" intervenant="">
+                <visite date="2014-12-08" intervenant="002">
                     <acte id="401"/>
                 </visite>
                 
         </patient>
-        </patients>
+        <patient><nom>eazaze</nom><prénom>aaezae</prénom><numéro>undefined</numéro><sexe>F</sexe><naissance></naissance><visite date="2014-12-08"/><adresse><étage></étage><numéro></numéro><rue></rue><ville></ville><codePostal>azaezezae</codePostal></adresse></patient></patients>
     </cabinet>
