@@ -124,7 +124,7 @@ function init(port, applicationServerIP, applicationServerPort) {
             prénom: req.body.patientForname || "",
             nom: req.body.patientName || "",
             sexe: req.body.patientSex || "F",
-            naissance: req.body.naissance || "",
+            naissance: req.body.patientBirthday || "",
             numéroSécuriteSociale: req.body.patientNumber || "undefined",
             adresse: {
                 ville: req.body.patientCity || "",
