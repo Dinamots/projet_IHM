@@ -114,6 +114,9 @@ function init(port, applicationServerIP, applicationServerPort) {
                 res.end();
         }
     });
+    app.post("/test", (req, res) => {
+        console.log("youhouuu");
+    });
     // Define HTTP ressource PORT /addPatient, may contains new patient information
     app.post("/addPatient", (req, res) => {
         console.log("/addPatient, \nreq.body:\n\t", req.body, "\n_______________________");
@@ -233,6 +236,7 @@ function init(port, applicationServerIP, applicationServerPort) {
             dataBuffer => dataBuffer.toString()
             );
             const P_all = Promise.all( [P_xml, P_xsd] );
+
             P_all.then	( ([str_xml, str_xsd]) => { // If resolved
                     // Check xml / xsd
                     console.log( "./data/cabinet.xsd" );
@@ -265,4 +269,4 @@ console.log(`Usage :
 `);
 console.log("HTTP server listening on port ", port);
 init(port, applicationServerIP, applicationServerPort);
-//# sourceMappingURL=serverCabinerMedical.js.map
+//# sourceMappingURL=serverCabinetMedical.js.map
