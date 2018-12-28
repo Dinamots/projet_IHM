@@ -12,14 +12,16 @@ import {
   MatBadgeModule,
   MatButtonModule,
   MatCheckboxModule, MatDialogModule,
-  MatFormFieldModule,
+  MatFormFieldModule, MatDatepickerModule,
   MatGridListModule, MatIconModule, MatInputModule,
-  MatListModule, MatSelectModule, MatToolbarModule
+  MatListModule, MatSelectModule, MatToolbarModule, MatNativeDateModule
 } from '@angular/material';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {PatientsListComponent} from './patients-list/patients-list.component';
 import {DialogAddPatientComponent} from './dialog-add-patient/dialog-add-patient.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {DatePipe} from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     PatientComponent,
     InfirmiersListComponent,
     PatientsListComponent,
-    DialogAddPatientComponent
+    DialogAddPatientComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -48,10 +50,12 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatButtonModule,
     BrowserAnimationsModule,
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDatepickerModule,
+    MatNativeDateModule
 
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
   entryComponents: [DialogAddPatientComponent]
 

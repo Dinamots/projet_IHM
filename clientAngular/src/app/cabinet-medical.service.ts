@@ -61,6 +61,7 @@ export class CabinetMedicalService {
     return {
       prenom: this.getNodeValue(patient, 'prénom'),
       nom: this.getNodeValue(patient, 'nom'),
+      date: this.getNodeValue(patient, 'naissance'),
       sexe: this.stringToSexe((this.getNodeValue(patient, 'sexe'))),
       numeroSecuriteSociale: this.getNodeValue(patient, 'numéro'),
       adresse: this.getAdresse(patient.getElementsByTagName('adresse').item(0))
@@ -147,7 +148,7 @@ export class CabinetMedicalService {
       patientForname: patient.prenom,
       patientNumber: patient.numeroSecuriteSociale,
       patientSex: patient.sexe === sexeEnum.M ? 'M' : patient.sexe === sexeEnum.F ? 'F' : 'A',
-      patientBirthday: 'AAAA-MM-JJ',
+      patientBirthday: patient.date,
       patientFloor: patient.adresse.etage,
       patientStreetNumber: patient.adresse.numero,
       patientStreet: patient.adresse.rue,

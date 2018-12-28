@@ -3,6 +3,8 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {PatientInterface} from '../dataInterfaces/patient';
 import {sexeEnum} from '../dataInterfaces/sexe';
 import {FormControl, Validators} from '@angular/forms';
+import {DatePipe} from '@angular/common';
+
 
 @Component({
   selector: 'app-dialog-add-patient',
@@ -17,6 +19,7 @@ export class DialogAddPatientComponent implements OnInit {
   ];
   public create: boolean = this.data.nom === undefined;
   public selectedValue = this.toString(this.data.sexe);
+  public dateControl: FormControl = new FormControl(this.data.date, [Validators.required]);
   public codePostalControl: FormControl = new FormControl(this.data.adresse.codePostal, [Validators.required]);
   public villeControl: FormControl = new FormControl(this.data.adresse.ville, [Validators.required]);
   public nomControl: FormControl = new FormControl(this.data.nom, [Validators.required]);
@@ -29,10 +32,11 @@ export class DialogAddPatientComponent implements OnInit {
   public etageControl: FormControl = new FormControl(this.data.adresse.etage);
   public numeroRueControl: FormControl = new FormControl(this.data.adresse.numero);
   public sexeControl: FormControl = new FormControl(this.data.sexe, [Validators.required]);
-
+  public minDate = new Date(1900, 0, 1);
+  public maxDate = new Date();
 
   constructor(public dialogRef: MatDialogRef<DialogAddPatientComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: PatientInterface) {
+              @Inject(MAT_DIALOG_DATA) public data: PatientInterface, public datepipe: DatePipe) {
   }
 
   ngOnInit() {
@@ -71,7 +75,13 @@ export class DialogAddPatientComponent implements OnInit {
         '';
   }
 
-  getChange(control: FormControl, dataVal: any, value: any) {
+  getDate(control: FormControl, dataVal: any, value: Date): any {
+    const dateString = this.datepipe.transform(value, 'yyyy-MM-dd');
+    return this.getChange(control, dataVal, dateString);
+
+  }
+
+  getChange(control: FormControl, dataVal: any, value: any): any {
     if (control.valid) {
       return value;
     } else {
@@ -87,12 +97,7 @@ export class DialogAddPatientComponent implements OnInit {
     return this.nomControl.valid
       && this.prenomControl.valid
       && this.codePostalControl.valid
-      && this.etageControl
-      && this.numeroRueControl
-      && this.rueControl
-      && this.villeControl
-      && this.sexeControl
-      && this.numeroControl;
+      && this.numeroControl.valid;
   }
 
 }

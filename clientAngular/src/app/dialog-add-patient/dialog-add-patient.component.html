@@ -22,6 +22,18 @@
     <mat-error *ngIf="prenomControl.invalid">{{getErrorMessage(prenomControl)}}</mat-error>
   </mat-form-field>
   <mat-form-field>
+    <input matInput
+           placeholder="Date de naissance"
+           [min]="minDate"
+           [max]="maxDate"
+           [matDatepicker]="picker"
+           [formControl]="dateControl"
+           (dateChange)="data.date = getDate(dateControl,data.date,$event.target.value)"
+          >
+    <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+    <mat-datepicker  #picker  startView="year"></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
     <mat-select placeholder="Sexe" [(value)]="this.selectedValue" required>
       <mat-option
         *ngFor="let s of sexe"
