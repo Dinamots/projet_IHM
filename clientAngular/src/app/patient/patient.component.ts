@@ -35,10 +35,6 @@ export class PatientComponent implements OnInit {
     });
   }
 
-  remove() {
-    this.cabinetMedicalService.removeRequest(this.patient);
-  }
-
 
   get patient() {
     return this._patient;
