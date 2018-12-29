@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const xmldom_1 = require("xmldom");
 const multer = require("multer");
 const staticGzip = require("http-static-gzip-regexp");
+const utils_1 = require("./utils");
 // import * as libXML from "libxmljs";
 // import * as soap from "soap";
 let xmlSerializer = new xmldom_1.XMLSerializer();
@@ -31,13 +32,6 @@ function saveXML(doc, res) {
         }
         res.end();
     });
-}
-/**_________________________________________________________________________________________________________________________________
- * Returns DOM node of patient identified by numlber in document doc or null if there is no such patient ---------------------------
- **/
-function getPatient(doc, socialSecurityNumber) {
-    const L = Array.from(doc.getElementsByTagName("patient")); // doc.getElementsByTagName('patient');
-    return L.find(E => E.getElementsByTagName("numéro")[0].textContent === socialSecurityNumber);
 }
 /**_________________________________________________________________________________________________________________________________
  * Define HTTP server, implement some ressources -----------------------------------------------------------------------------------
@@ -114,81 +108,41 @@ function init(port, applicationServerIP, applicationServerPort) {
                 res.end();
         }
     });
-    app.post("/test", (req, res) => {
-        console.log("youhouuu");
+    app.post("/removePatient", (req, res) => {
+        console.log("/removePatient, \nreq.body:\n\t", req.body, "\n_______________________");
+        const patient = utils_1.createPatient(req.body);
+        // Is it a new patient or not ?
+        let patientElem = utils_1.getPatient(doc, patient.numéroSécuriteSociale);
+        if (patientElem) {
+            utils_1.removePatientFromDoc(patientElem);
+            saveXML(doc, res);
+        }
     });
     // Define HTTP ressource PORT /addPatient, may contains new patient information
     app.post("/addPatient", (req, res) => {
         console.log("/addPatient, \nreq.body:\n\t", req.body, "\n_______________________");
-        const patient = {
-            prénom: req.body.patientForname || "",
-            nom: req.body.patientName || "",
-            sexe: req.body.patientSex || "F",
-            naissance: req.body.patientBirthday || "",
-            numéroSécuriteSociale: req.body.patientNumber || "undefined",
-            adresse: {
-                ville: req.body.patientCity || "",
-                codePostal: req.body.patientPostalCode || "",
-                rue: req.body.patientStreet || "",
-                numéro: req.body.patientStreetNumber || "",
-                étage: req.body.patientFloor || ""
-            }
-        };
+        const patient = utils_1.createPatient(req.body);
         const patients = doc.getElementsByTagName("patients")[0];
         // Is it a new patient or not ?
-        let newPatient = getPatient(doc, patient.numéroSécuriteSociale);
+        let newPatient = utils_1.getPatient(doc, patient.numéroSécuriteSociale);
         if (!newPatient) {
-            newPatient = doc.createElement("patient");
-            patients.appendChild(newPatient);
+            utils_1.removePatientFromDoc(newPatient);
+            patients.appendChild(utils_1.createPatientElem(patient, doc));
+            saveXML(doc, res);
         }
         else {
-            while (newPatient.childNodes.length) {
-                newPatient.removeChild(newPatient.childNodes[0]);
-            }
+            console.error("Error patient exist:\n");
+            res.writeHead(500);
         }
-        // Name
-        const nom = doc.createElement("nom");
-        nom.appendChild(doc.createTextNode(patient.nom));
-        newPatient.appendChild(nom);
-        // Forname
-        const prénom = doc.createElement("prénom");
-        prénom.appendChild(doc.createTextNode(patient.prénom));
-        newPatient.appendChild(prénom);
-        // Social security number
-        const numéro = doc.createElement("numéro");
-        numéro.appendChild(doc.createTextNode(patient.numéroSécuriteSociale));
-        newPatient.appendChild(numéro);
-        // Sex
-        const sexe = doc.createElement("sexe");
-        sexe.appendChild(doc.createTextNode(patient.sexe));
-        newPatient.appendChild(sexe);
-        // Birthday
-        const naissance = doc.createElement("naissance");
-        naissance.appendChild(doc.createTextNode(patient.naissance));
-        newPatient.appendChild(naissance);
-        // Visites
-        const visite = doc.createElement("visite");
-        visite.setAttribute("date", "2014-12-08");
-        newPatient.appendChild(visite);
-        // Adress
-        const adresse = doc.createElement("adresse");
-        newPatient.appendChild(adresse);
-        const etage = doc.createElement("étage");
-        etage.appendChild(doc.createTextNode(patient.adresse.étage));
-        adresse.appendChild(etage);
-        const numAdress = doc.createElement("numéro");
-        numAdress.appendChild(doc.createTextNode(patient.adresse.numéro));
-        adresse.appendChild(numAdress);
-        const rue = doc.createElement("rue");
-        rue.appendChild(doc.createTextNode(patient.adresse.rue));
-        adresse.appendChild(rue);
-        const ville = doc.createElement("ville");
-        ville.appendChild(doc.createTextNode(patient.adresse.ville));
-        adresse.appendChild(ville);
-        const codePostal = doc.createElement("codePostal");
-        codePostal.appendChild(doc.createTextNode(patient.adresse.codePostal));
-        adresse.appendChild(codePostal);
-        console.log(xmlSerializer.serializeToString(newPatient));
+    });
+    app.post("/updatePatient", (req, res) => {
+        console.log("/updatePatient, \nreq.body:\n\t", req.body, "\n_______________________");
+        const patient = utils_1.createPatient(req.body);
+        let oldPatient = utils_1.getPatient(doc, req.body.object.numeroSecuriteSociale);
+        let intervenantId = utils_1.getIntervenantOfPatient(oldPatient);
+        const patients = doc.getElementsByTagName("patients")[0];
+        utils_1.removePatientFromDoc(oldPatient);
+        patients.appendChild(utils_1.createPatientElem(patient, doc, intervenantId));
         saveXML(doc, res);
     });
     // Define HTTP ressource POST /affectation, associate a patient with a nurse

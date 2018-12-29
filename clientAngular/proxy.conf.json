@@ -1,14 +1,22 @@
 {
- "/data": {
-   "target": "http://localhost:8090",
-   "secure": false
- },
- "/addPatient": {
-   "target": "http://localhost:8090",
-   "secure": false
- },
- "/affectation": {
-   "target": "http://localhost:8090",
-   "secure": false
- }
+  "/data": {
+    "target": "http://localhost:8090",
+    "secure": false
+  },
+  "/addPatient": {
+    "target": "http://localhost:8090",
+    "secure": false
+  },
+  "/affectation": {
+    "target": "http://localhost:8090",
+    "secure": false
+  },
+  "/removePatient": {
+    "target": "http://localhost:8090",
+    "secure": false
+  },
+  "/updatePatient": {
+    "target": "http://localhost:8090",
+    "secure": false
+  }
 }

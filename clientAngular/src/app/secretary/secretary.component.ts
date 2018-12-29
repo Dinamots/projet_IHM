@@ -32,9 +32,13 @@ export class SecretaryComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
       if (result !== undefined) {
-        this.cabinetMedicalService.addPatient(result).then(res => {
-          this.cabinetMedicalService.addPatientModel(result);
-        });
+        this.cabinetMedicalService.addPatient(result)
+          .catch(err => {
+            console.log(err);
+          })
+          .then(res => {
+            this.cabinetMedicalService.addPatientModel(result);
+          });
       }
       console.log('The dialog was closed');
     });

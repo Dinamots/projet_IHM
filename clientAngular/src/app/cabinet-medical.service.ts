@@ -141,9 +141,34 @@ export class CabinetMedicalService {
     });
   }
 
+  public removePatientModel(patient: PatientInterface) {
+    const infirmier: InfirmierInterface = this.getInfirmierOfPatient(patient);
+    if (infirmier != null) {
+      const infirmierIndex = this.getInfirmierIndex(infirmier);
+      console.log(infirmierIndex);
+      const patientIndex = this.getPatientIndexOfInfirmier(infirmierIndex, patient);
+      console.log(patientIndex);
+      console.log(this._cabinet.getValue().infirmiers[infirmierIndex].patients);
+      this._cabinet.getValue().infirmiers[infirmierIndex].patients.splice(patientIndex, 1);
+      console.log(this._cabinet.getValue().infirmiers[infirmierIndex].patients);
+    } else {
+      const patientIndex = this.getIndexOfUnaffectedPatient(patient);
+      this._cabinet.getValue().patientsNonAffectes.splice(patientIndex, 1);
+    }
 
-  private addPatientRequest(patient: PatientInterface): Promise<Object> {
-    return this.http.post('/addPatient', {
+  }
+
+  public removePatient(patient: PatientInterface): Promise<Object> {
+    return this.patientRequest(patient, '/removePatient');
+  }
+
+  public updatePatient(patient: PatientInterface, oldPatient: PatientInterface) {
+    this.patientRequest(patient, '/updatePatient', oldPatient);
+  }
+
+
+  private patientRequest(patient: PatientInterface, url: string, object?: object): Promise<Object> {
+    return this.http.post(url, {
       patientName: patient.nom,
       patientForname: patient.prenom,
       patientNumber: patient.numeroSecuriteSociale,
@@ -153,7 +178,8 @@ export class CabinetMedicalService {
       patientStreetNumber: patient.adresse.numero,
       patientStreet: patient.adresse.rue,
       patientPostalCode: patient.adresse.codePostal,
-      patientCity: patient.adresse.ville
+      patientCity: patient.adresse.ville,
+      object: object
     }).toPromise();
   }
 
@@ -167,7 +193,7 @@ export class CabinetMedicalService {
   }
 
   addPatient(patient: PatientInterface): Promise<Object> {
-    return this.addPatientRequest(patient);
+    return this.patientRequest(patient, '/addPatient');
   }
 
   desaffectationModel(patient: PatientInterface) {
@@ -220,6 +246,8 @@ export class CabinetMedicalService {
       return inf.patients.filter(p => p === patient).length !== 0;
     });
 
+    console.log(infTab);
+
     if (infTab.length !== 0) {
       infirmier = infTab[0];
       infIndex = this._cabinet.getValue().infirmiers.indexOf(infirmier);
@@ -232,6 +260,16 @@ export class CabinetMedicalService {
 
   public getUnaffectedPatientByIndex(index: number): PatientInterface {
     return this._cabinet.getValue().patientsNonAffectes[index];
+  }
+
+  public getIndexOfUnaffectedPatient(patient: PatientInterface): number {
+    return this._cabinet.getValue().patientsNonAffectes.reduce((acc, x, i) => {
+      if (x === patient) {
+        acc = i;
+        return acc;
+      }
+      return acc;
+    }, 0);
   }
 
 }

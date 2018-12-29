@@ -1,6 +1,10 @@
 <div>
   {{patient.prenom}}
   {{patient.nom}}
-  <button mat-button class="add-patient" (click)="openDialog()"><mat-icon>update</mat-icon></button>
-  <button mat-button class="add-patient"><mat-icon>remove</mat-icon></button>
+  <button mat-button class="add-patient" (click)="openDialog()">
+    <mat-icon>update</mat-icon>
+  </button>
+  <button mat-button class="add-patient" (click)="remove()">
+    <mat-icon>remove</mat-icon>
+  </button>
 </div>

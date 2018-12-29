@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><cabinet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.ujf-grenoble.fr/l3miage/cabinet" xsi:schemaLocation="http://www.ujf-grenoble.fr/l3miage/cabinet/../schema/cabinet.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<cabinet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.ujf-grenoble.fr/l3miage/cabinet"
+         xsi:schemaLocation="http://www.ujf-grenoble.fr/l3miage/cabinet/../schema/cabinet.xsd">
     <nom>Soins à Grenoble</nom>
     <adresse>
         <numéro>36</numéro>
@@ -42,14 +44,42 @@
         </infirmier>
     </infirmiers>
     <patients>
-        <patient><nom>Aire</nom><prénom>Axel</prénom><numéro>193061305545319</numéro><sexe>M</sexe><naissance>1993-01-22</naissance><visite date="2014-12-08" intervenant="003"/><adresse><étage>4</étage><numéro>46</numéro><rue>avenue Félix Viallet</rue><ville>Grenoble</ville><codePostal>38031</codePostal></adresse></patient>
-        <patient><nom>Orouge</nom><prénom>Elvire</prénom><numéro>280036902305219</numéro><sexe>F</sexe><naissance>2018-07-05</naissance><visite date="2014-12-08"/><adresse><étage></étage><numéro></numéro><rue>Rond-Point de la Croix de Vie</rue><ville>La Tronche</ville><codePostal>38700</codePostal></adresse></patient>
-        <patient>        
+        <patient>
+            <nom>Aire</nom>
+            <prénom>Axel</prénom>
+            <numéro>193061305545319</numéro>
+            <sexe>M</sexe>
+            <naissance>1993-01-22</naissance>
+            <visite date="2014-12-08" intervenant="003"/>
+            <adresse>
+                <étage>4</étage>
+                <numéro>46</numéro>
+                <rue>avenue Félix Viallet</rue>
+                <ville>Grenoble</ville>
+                <codePostal>38031</codePostal>
+            </adresse>
+        </patient>
+        <patient>
+            <nom>Orougea</nom>
+            <prénom>Elvire</prénom>
+            <numéro>280036902305219</numéro>
+            <sexe>F</sexe>
+            <naissance>2018-07-05</naissance>
+            <visite date="2014-12-08"/>
+            <adresse>
+                <étage></étage>
+                <numéro></numéro>
+                <rue>Rond-Point de la Croix de Vie</rue>
+                <ville>La Tronche</ville>
+                <codePostal>38700</codePostal>
+            </adresse>
+        </patient>
+        <patient>
             <nom>Oscare</nom>
             <prénom>Pien</prénom>
             <sexe>M</sexe>
             <naissance>1975-10-25</naissance>
-            <!-- Homme, née en octobre 75 en France, à Chambéry (n° 65 dans la Savoie) 
+            <!-- Homme, née en octobre 75 en France, à Chambéry (n° 65 dans la Savoie)
             692e naissance (clé calculée: 67)-->
             <numéro>175107306569267</numéro>
             <adresse>
@@ -57,19 +87,47 @@
                 <ville>Grenoble</ville>
                 <codePostal>38000</codePostal>
             </adresse>
-                <!-- 
-                Oscar s'est cassé l'os du pied en jouant au foot. d
-                Il a besoin d'un prélèvement par ponction veineuse directe le premier
-                jour et injection intraveineuse directe isolée d'anthalgiques les 
-                autres jours.
-                -->
-                <visite date="2014-12-08" intervenant="002">
-                    <acte id="101"/>
-                    <acte id="104"/>               
-                </visite>
-                
+            <!--
+            Oscar s'est cassé l'os du pied en jouant au foot. d
+            Il a besoin d'un prélèvement par ponction veineuse directe le premier
+            jour et injection intraveineuse directe isolée d'anthalgiques les
+            autres jours.
+            -->
+            <visite date="2014-12-08" intervenant="002">
+                <acte id="101"/>
+                <acte id="104"/>
+            </visite>
+
         </patient>
-        <patient><nom>Xavier</nom><prénom>Kapoëtla</prénom><numéro>110083306303570</numéro><sexe>M</sexe><naissance>2018-01-11</naissance><visite date="2014-12-08"/><adresse><étage></étage><numéro>25</numéro><rue>rue des Martyrs</rue><ville>Grenoble</ville><codePostal>38042</codePostal></adresse></patient>
-        <patient><nom>Daumas</nom><prénom>Jolan</prénom><numéro>110082516002010</numéro><sexe>M</sexe><naissance>2018-09-14</naissance><visite date="2014-12-08"/><adresse><étage></étage><numéro></numéro><rue></rue><ville>Saint-Gély-du-Fesc</ville><codePostal>34980</codePostal></adresse></patient>
-        </patients>
-    </cabinet>
+        <patient>
+            <nom>Xavier</nom>
+            <prénom>Kapoëtla</prénom>
+            <numéro>110083306303570</numéro>
+            <sexe>M</sexe>
+            <naissance>2018-01-11</naissance>
+            <visite date="2014-12-08"/>
+            <adresse>
+                <étage/>
+                <numéro>25</numéro>
+                <rue>rue des Martyrs</rue>
+                <ville>Grenoble</ville>
+                <codePostal>38042</codePostal>
+            </adresse>
+        </patient>
+        <patient>
+            <nom>Daumas</nom>
+            <prénom>Jolan</prénom>
+            <numéro>110082516002010</numéro>
+            <sexe>M</sexe>
+            <naissance>2018-09-14</naissance>
+            <visite date="2014-12-08"/>
+            <adresse>
+                <étage/>
+                <numéro/>
+                <rue/>
+                <ville>Saint-Gély-du-Fesc</ville>
+                <codePostal>34980</codePostal>
+            </adresse>
+        </patient>
+    </patients>
+</cabinet>

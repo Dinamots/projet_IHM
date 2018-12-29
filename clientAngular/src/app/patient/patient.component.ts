@@ -21,6 +21,7 @@ export class PatientComponent implements OnInit {
   }
 
   openDialog(): void {
+    const oldPatient: PatientInterface = this.patient;
     const dialogRef = this.dialog.open(DialogAddPatientComponent, {
       width: '250px',
       data: this.patient
@@ -28,11 +29,23 @@ export class PatientComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
-        this.cabinetMedicalService.addPatient(result);
-        this.cabinetMedicalService.desaffectationModel(result);
+        this.cabinetMedicalService.updatePatient(result, oldPatient);
+        // this.cabinetMedicalService.addPatient(result);
+        // this.cabinetMedicalService.desaffectationModel(result);
       }
 
     });
+  }
+
+  remove() {
+    this.cabinetMedicalService.removePatient(this.patient)
+      .catch(err => {
+        console.log(err);
+      })
+      .then(res => {
+        console.log('ici');
+        this.cabinetMedicalService.removePatientModel(this.patient);
+      });
   }
 
 
