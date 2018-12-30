@@ -1,12 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 div.main-container {
   display: flex;
 }
 
 
 .main-container > * {
-  flex:1;
+  flex: 1;
   margin: 20px;
 }
 
@@ -15,7 +16,7 @@ div.list {
   min-height: 50px;
 }
 
-.mat-badge{
+.mat-badge {
   display: inline-block;
 }
 
@@ -30,31 +31,6 @@ mat-toolbar span {
 button.add-patient {
   margin-left: 20px;
 }
-
-/*.patient-list {
-  margin-left: 30px;
-  border: solid 1px #ccc;
-  min-height: 60px;
-  background: white;
-  border-radius: 4px;
-  overflow: hidden;
-  display: block;
-}
-
-.patient-box {
-  padding: 20px 10px;
-  border-bottom: solid 4px #ccc;
-  color: rgba(0, 0, 0, 0.87);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  cursor: move;
-  background: white;
-  font-size: 14px;
-}
-
 
 .cdk-drag-preview {
   box-sizing: border-box;
@@ -71,20 +47,3 @@ button.add-patient {
 .cdk-drag-animating {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
-
-.container {
-  width: 400px;
-  max-width: 100%;
-  margin: 0 25px 25px 0;
-  display: inline-block;
-  vertical-align: top;
-}
-
-.patient-box:last-child {
-  border: none;
-}
-
-.patient-list.cdk-drop-list-dragging .patient-box:not(.cdk-drag-placeholder) {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-}
-*/

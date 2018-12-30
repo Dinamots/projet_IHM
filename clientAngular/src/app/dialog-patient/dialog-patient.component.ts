@@ -8,10 +8,10 @@ import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-dialog-add-patient',
-  templateUrl: './dialog-add-patient.component.html',
-  styleUrls: ['./dialog-add-patient.component.css']
+  templateUrl: './dialog-patient.component.html',
+  styleUrls: ['./dialog-patient.component.css']
 })
-export class DialogAddPatientComponent implements OnInit {
+export class DialogPatientComponent implements OnInit {
   public sexe: string[] = [
     'Masculin',
     'Féminin',
@@ -26,7 +26,8 @@ export class DialogAddPatientComponent implements OnInit {
   public prenomControl: FormControl = new FormControl(this.data.prenom, [Validators.required]);
   public numeroControl: FormControl = new FormControl(
     this.data.numeroSecuriteSociale,
-    [Validators.required, Validators.pattern('^[12][0-9]{2}[0-1][0-9](2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}[0-9]{2}$')]
+    [Validators.required,
+      Validators.pattern('^[12][0-9]{2}[0-1][0-9](2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}[0-9]{2}$')]
   );
   public rueControl: FormControl = new FormControl(this.data.adresse.rue);
   public etageControl: FormControl = new FormControl(this.data.adresse.etage);
@@ -35,7 +36,7 @@ export class DialogAddPatientComponent implements OnInit {
   public minDate = new Date(1900, 0, 1);
   public maxDate = new Date();
 
-  constructor(public dialogRef: MatDialogRef<DialogAddPatientComponent>,
+  constructor(public dialogRef: MatDialogRef<DialogPatientComponent>,
               @Inject(MAT_DIALOG_DATA) public data: PatientInterface, public datepipe: DatePipe) {
   }
 

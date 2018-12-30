@@ -67,8 +67,14 @@ export function createPatientElem(patient, doc: Document, intervenantId?: string
 
 }
 
-function removePatient(patient) {
-
+export function numeroAlreadyExist(socialSecurityNumber: string, doc: Document): boolean {
+    const patients: Element[] = Array.from(doc.getElementsByTagName("patient"));
+    return patients.reduce((acc, patient) => {
+        if (patient.getElementsByTagName("numéro")[0].textContent.trim() === socialSecurityNumber) {
+            return acc + 1;
+        }
+        return acc;
+    }, 0) !== 0;
 }
 
 /**_________________________________________________________________________________________________________________________________

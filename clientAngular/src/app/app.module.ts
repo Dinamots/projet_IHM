@@ -18,7 +18,7 @@ import {
 } from '@angular/material';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {PatientsListComponent} from './patients-list/patients-list.component';
-import {DialogAddPatientComponent} from './dialog-add-patient/dialog-add-patient.component';
+import {DialogPatientComponent} from './dialog-patient/dialog-patient.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DatePipe} from '@angular/common';
 
@@ -31,7 +31,7 @@ import {DatePipe} from '@angular/common';
     PatientComponent,
     InfirmiersListComponent,
     PatientsListComponent,
-    DialogAddPatientComponent,
+    DialogPatientComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -57,7 +57,7 @@ import {DatePipe} from '@angular/common';
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],
-  entryComponents: [DialogAddPatientComponent]
+  entryComponents: [DialogPatientComponent]
 
 
 })

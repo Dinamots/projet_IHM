@@ -4,7 +4,7 @@ import {CabinetInterface} from '../dataInterfaces/cabinet';
 import {HttpClient} from '@angular/common/http';
 import {sexeEnum} from '../dataInterfaces/sexe';
 import {Adresse} from '../dataInterfaces/adresse';
-import {DialogAddPatientComponent} from '../dialog-add-patient/dialog-add-patient.component';
+import {DialogPatientComponent} from '../dialog-patient/dialog-patient.component';
 import {MatDialog} from '@angular/material';
 
 @Component({
@@ -22,7 +22,7 @@ export class SecretaryComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogAddPatientComponent, {
+    const dialogRef = this.dialog.open(DialogPatientComponent, {
       width: '250px',
       data: {
         adresse: {}

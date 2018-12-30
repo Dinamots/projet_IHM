@@ -162,8 +162,8 @@ export class CabinetMedicalService {
     return this.patientRequest(patient, '/removePatient');
   }
 
-  public updatePatient(patient: PatientInterface, oldPatient: PatientInterface) {
-    this.patientRequest(patient, '/updatePatient', oldPatient);
+  public updatePatient(patient: PatientInterface, oldPatient: PatientInterface): Promise<Object> {
+    return this.patientRequest(patient, '/updatePatient', oldPatient);
   }
 
 

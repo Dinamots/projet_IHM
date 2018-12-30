@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CabinetMedicalService} from '../cabinet-medical.service';
-import {DialogAddPatientComponent} from '../dialog-add-patient/dialog-add-patient.component';
+import {DialogPatientComponent} from '../dialog-patient/dialog-patient.component';
 import {MatDialog} from '@angular/material';
 import {PatientInterface} from '../dataInterfaces/patient';
 
@@ -21,19 +21,20 @@ export class PatientComponent implements OnInit {
   }
 
   openDialog(): void {
-    const oldPatient: PatientInterface = this.patient;
-    const dialogRef = this.dialog.open(DialogAddPatientComponent, {
+    const oldPatient: PatientInterface = JSON.parse(JSON.stringify(this.patient));
+    const dialogRef = this.dialog.open(DialogPatientComponent, {
       width: '250px',
       data: this.patient
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
-        this.cabinetMedicalService.updatePatient(result, oldPatient);
-        // this.cabinetMedicalService.addPatient(result);
-        // this.cabinetMedicalService.desaffectationModel(result);
+        this.cabinetMedicalService.updatePatient(result, oldPatient)
+          .catch(err => {
+            console.log(err);
+            this.patient = JSON.parse(JSON.stringify(oldPatient));
+          });
       }
-
     });
   }
 
@@ -43,7 +44,6 @@ export class PatientComponent implements OnInit {
         console.log(err);
       })
       .then(res => {
-        console.log('ici');
         this.cabinetMedicalService.removePatientModel(this.patient);
       });
   }

@@ -137,6 +137,13 @@ function init(port, applicationServerIP, applicationServerPort) {
     });
     app.post("/updatePatient", (req, res) => {
         console.log("/updatePatient, \nreq.body:\n\t", req.body, "\n_______________________");
+        if (utils_1.numeroAlreadyExist(req.body.patientNumber, doc)
+            && req.body.patientNumber !== req.body.object.numeroSecuriteSociale) {
+            console.error("Error patientNumber already exist:\n");
+            res.writeHead(500);
+            res.end();
+            return;
+        }
         const patient = utils_1.createPatient(req.body);
         let oldPatient = utils_1.getPatient(doc, req.body.object.numeroSecuriteSociale);
         let intervenantId = utils_1.getIntervenantOfPatient(oldPatient);

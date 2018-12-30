@@ -66,8 +66,16 @@ function createPatientElem(patient, doc, intervenantId) {
     return newPatient;
 }
 exports.createPatientElem = createPatientElem;
-function removePatient(patient) {
+function numeroAlreadyExist(socialSecurityNumber, doc) {
+    const patients = Array.from(doc.getElementsByTagName("patient"));
+    return patients.reduce((acc, patient) => {
+        if (patient.getElementsByTagName("numéro")[0].textContent.trim() === socialSecurityNumber) {
+            return acc + 1;
+        }
+        return acc;
+    }, 0) !== 0;
 }
+exports.numeroAlreadyExist = numeroAlreadyExist;
 /**_________________________________________________________________________________________________________________________________
  * Returns DOM node of patient identified by numlber in document doc or null if there is no such patient ---------------------------
  **/
