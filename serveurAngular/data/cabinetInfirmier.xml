@@ -58,21 +58,7 @@
                 <codePostal>38031</codePostal>
             </adresse>
         </patient>
-        <patient>
-            <nom>Orougea</nom>
-            <prénom>Elvire</prénom>
-            <numéro>280036902305219</numéro>
-            <sexe>F</sexe>
-            <naissance>2018-07-05</naissance>
-            <visite date="2014-12-08" intervenant="003"/>
-            <adresse>
-                <étage/>
-                <numéro/>
-                <rue>Rond-Point de la Croix de Vie</rue>
-                <ville>La Tronche</ville>
-                <codePostal>38700</codePostal>
-            </adresse>
-        </patient>
+        
 
         <patient>
             <nom>Xavier</nom>
@@ -80,7 +66,7 @@
             <numéro>110083306303570</numéro>
             <sexe>M</sexe>
             <naissance>2018-01-11</naissance>
-            <visite date="2014-12-08" intervenant="003"/>
+            <visite date="2014-12-08" intervenant=""/>
             <adresse>
                 <étage/>
                 <numéro>25</numéro>
@@ -90,5 +76,5 @@
             </adresse>
         </patient>
         
-    <patient><nom>Oscareyi</nom><prénom>Pien</prénom><numéro>175107306569270</numéro><sexe>M</sexe><naissance>1975-10-25</naissance><visite date="2014-12-08" intervenant="001"/><adresse><étage/><numéro/><rue>rue Casimir Brenier</rue><ville>Grenoble</ville><codePostal>38000</codePostal></adresse></patient></patients>
+    <patient><nom>Oscareyi</nom><prénom>Pien</prénom><numéro>175107306569270</numéro><sexe>M</sexe><naissance>1975-10-25</naissance><visite date="2014-12-08" intervenant="002"/><adresse><étage/><numéro/><rue>rue Casimir Brenier</rue><ville>Grenoble</ville><codePostal>38000</codePostal></adresse></patient></patients>
 </cabinet>

@@ -6,6 +6,9 @@ import {sexeEnum} from '../dataInterfaces/sexe';
 import {Adresse} from '../dataInterfaces/adresse';
 import {DialogPatientComponent} from '../dialog-patient/dialog-patient.component';
 import {MatDialog} from '@angular/material';
+import {reject} from 'q';
+import {DialogComponent} from '../dialog/dialog.component';
+import {PatientInterface} from '../dataInterfaces/patient';
 
 @Component({
   selector: 'app-secretary',
@@ -29,15 +32,20 @@ export class SecretaryComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result: PatientInterface) => {
       console.log(result);
       if (result !== undefined) {
         this.cabinetMedicalService.addPatient(result)
+          .then(res => {
+            console.log(res);
+            this.cabinetMedicalService.addPatientModel(result);
+          })
           .catch(err => {
             console.log(err);
-          })
-          .then(res => {
-            this.cabinetMedicalService.addPatientModel(result);
+            this.dialog.open(DialogComponent, {
+              width: '250px',
+              data: `Un patient porte déjà le numéro ${result.numeroSecuriteSociale} , ajout impossible`
+            });
           });
       }
       console.log('The dialog was closed');

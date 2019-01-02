@@ -149,7 +149,7 @@ function init(port, applicationServerIP, applicationServerPort) {
             const patients = doc.getElementsByTagName("patients")[0];
             if (numeroAlreadyExist(req.body.patientNumber, doc)) {
                 console.error("Error patientNumber already exist:\n");
-                res.writeHead(500);
+                res.writeHead(500, "Error patientNumber already exist:\n");
                 res.end();
                 return;
             }

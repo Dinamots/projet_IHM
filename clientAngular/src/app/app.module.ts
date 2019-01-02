@@ -21,6 +21,7 @@ import {PatientsListComponent} from './patients-list/patients-list.component';
 import {DialogPatientComponent} from './dialog-patient/dialog-patient.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DatePipe} from '@angular/common';
+import {DialogComponent} from './dialog/dialog.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import {DatePipe} from '@angular/common';
     InfirmiersListComponent,
     PatientsListComponent,
     DialogPatientComponent,
+    DialogComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -57,7 +59,7 @@ import {DatePipe} from '@angular/common';
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],
-  entryComponents: [DialogPatientComponent]
+  entryComponents: [DialogPatientComponent, DialogComponent]
 
 
 })
