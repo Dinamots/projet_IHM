@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e9660c0-427f-4238-ab36-590c0af987b9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/dialog-patient/dialog-patient.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/dialog-patient/dialog-patient.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patient.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patient/patient.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/secretary/secretary.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/secretary/secretary.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/cabinetInfirmier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data/cabinetInfirmier.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serverCabinetMedical.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serverCabinetMedical.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/serverCabinetMedical.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serverCabinetMedical.ts" beforeDir="false" afterPath="$PROJECT_DIR$/serverCabinetMedical.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -46,7 +43,7 @@
         <entry file="file://$PROJECT_DIR$/data/cabinetInfirmier.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="397">
-              <caret line="79" column="10" lean-forward="true" selection-start-line="79" selection-start-column="10" selection-end-line="79" selection-end-column="10" />
+              <caret line="51" column="10" lean-forward="true" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -165,7 +162,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24704000" />
+    <option name="totallyTimeSpent" value="25206000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="85" y="25" width="1750" height="980" extended-state="0" />
@@ -270,7 +267,7 @@
     <entry file="file://$PROJECT_DIR$/data/cabinetInfirmier.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="397">
-          <caret line="79" column="10" lean-forward="true" selection-start-line="79" selection-start-column="10" selection-end-line="79" selection-end-column="10" />
+          <caret line="51" column="10" lean-forward="true" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="10" />
         </state>
       </provider>
     </entry>

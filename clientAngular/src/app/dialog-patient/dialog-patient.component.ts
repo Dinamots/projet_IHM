@@ -98,7 +98,8 @@ export class DialogPatientComponent implements OnInit {
     return this.nomControl.valid
       && this.prenomControl.valid
       && this.codePostalControl.valid
-      && this.numeroControl.valid;
+      && this.numeroControl.valid
+      && this.villeControl.valid;
   }
 
 }

@@ -1,12 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CabinetMedicalService} from '../cabinet-medical.service';
 import {CabinetInterface} from '../dataInterfaces/cabinet';
-import {HttpClient} from '@angular/common/http';
-import {sexeEnum} from '../dataInterfaces/sexe';
-import {Adresse} from '../dataInterfaces/adresse';
 import {DialogPatientComponent} from '../dialog-patient/dialog-patient.component';
 import {MatDialog} from '@angular/material';
-import {reject} from 'q';
 import {DialogComponent} from '../dialog/dialog.component';
 import {PatientInterface} from '../dataInterfaces/patient';
 

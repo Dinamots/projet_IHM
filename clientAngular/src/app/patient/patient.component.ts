@@ -3,6 +3,7 @@ import {CabinetMedicalService} from '../cabinet-medical.service';
 import {DialogPatientComponent} from '../dialog-patient/dialog-patient.component';
 import {MatDialog} from '@angular/material';
 import {PatientInterface} from '../dataInterfaces/patient';
+import {DialogComponent} from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-patient',
@@ -28,13 +29,21 @@ export class PatientComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
       if (result !== undefined) {
         this.cabinetMedicalService.updatePatient(result, oldPatient)
           .catch(err => {
+            this.dialog.open(DialogComponent, {
+              width: '250px',
+              data: `Un patient porte déjà le numéro ${result.numeroSecuriteSociale} , update impossible`
+            });
             console.log(err);
             this.patient = JSON.parse(JSON.stringify(oldPatient));
           });
+      } else {
+        this.patient = JSON.parse(JSON.stringify(oldPatient));
       }
+
     });
   }
 

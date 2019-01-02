@@ -43,38 +43,10 @@
         </infirmier>
     </infirmiers>
     <patients>
-        <patient>
-            <nom>Aire</nom>
-            <prénom>Axel</prénom>
-            <numéro>193061305545319</numéro>
-            <sexe>M</sexe>
-            <naissance>1993-01-22</naissance>
-            <visite date="2014-12-08" intervenant=""/>
-            <adresse>
-                <étage>4</étage>
-                <numéro>46</numéro>
-                <rue>avenue Félix Viallet</rue>
-                <ville>Grenoble</ville>
-                <codePostal>38031</codePostal>
-            </adresse>
-        </patient>
+        
         
 
-        <patient>
-            <nom>Xavier</nom>
-            <prénom>Kapoëtla</prénom>
-            <numéro>110083306303570</numéro>
-            <sexe>M</sexe>
-            <naissance>2018-01-11</naissance>
-            <visite date="2014-12-08" intervenant=""/>
-            <adresse>
-                <étage/>
-                <numéro>25</numéro>
-                <rue>rue des Martyrs</rue>
-                <ville>Grenoble</ville>
-                <codePostal>38042</codePostal>
-            </adresse>
-        </patient>
         
-    <patient><nom>Oscareyi</nom><prénom>Pien</prénom><numéro>175107306569270</numéro><sexe>M</sexe><naissance>1975-10-25</naissance><visite date="2014-12-08" intervenant="002"/><adresse><étage/><numéro/><rue>rue Casimir Brenier</rue><ville>Grenoble</ville><codePostal>38000</codePostal></adresse></patient></patients>
+        
+    <patient><nom>Oscareyi</nom><prénom>Pien</prénom><numéro>175107306569270</numéro><sexe>M</sexe><naissance>1975-10-25</naissance><visite date="2014-12-08" intervenant="002"/><adresse><étage/><numéro/><rue>rue Casimir Brenier</rue><ville>Grenoble</ville><codePostal>38000</codePostal></adresse></patient><patient><nom>Aire</nom><prénom>Axel</prénom><numéro>280036902305219</numéro><sexe>M</sexe><naissance>1993-01-22</naissance><visite date="2014-12-08" intervenant=""/><adresse><étage>4</étage><numéro>46</numéro><rue>avenue Félix Viallet</rue><ville>Grenoble</ville><codePostal>38031</codePostal></adresse></patient><patient><nom>Xavier</nom><prénom>Kapoëtla</prénom><numéro>110083306303570</numéro><sexe>M</sexe><naissance>2018-01-11</naissance><visite date="2014-12-08" intervenant=""/><adresse><étage></étage><numéro></numéro><rue></rue><ville>Grenoble</ville><codePostal>38042</codePostal></adresse></patient></patients>
 </cabinet>
