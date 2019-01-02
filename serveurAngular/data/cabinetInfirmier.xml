@@ -89,20 +89,6 @@
                 <codePostal>38042</codePostal>
             </adresse>
         </patient>
-        <patient>
-            <nom>Daumas</nom>
-            <prénom>Jolan</prénom>
-            <numéro>110082516002010</numéro>
-            <sexe>M</sexe>
-            <naissance>2018-09-14</naissance>
-            <visite date="2014-12-08" intervenant=""/>
-            <adresse>
-                <étage/>
-                <numéro/>
-                <rue/>
-                <ville>Saint-Gély-du-Fesc</ville>
-                <codePostal>34980</codePostal>
-            </adresse>
-        </patient>
-    <patient><nom>Oscareyi</nom><prénom>Pien</prénom><numéro>175107306569270</numéro><sexe>M</sexe><naissance>1975-10-25</naissance><visite date="2014-12-08" intervenant="001"/><adresse><étage></étage><numéro></numéro><rue>rue Casimir Brenier</rue><ville>Grenoble</ville><codePostal>38000</codePostal></adresse></patient></patients>
+        
+    <patient><nom>Oscareyi</nom><prénom>Pien</prénom><numéro>175107306569270</numéro><sexe>M</sexe><naissance>1975-10-25</naissance><visite date="2014-12-08" intervenant="001"/><adresse><étage/><numéro/><rue>rue Casimir Brenier</rue><ville>Grenoble</ville><codePostal>38000</codePostal></adresse></patient></patients>
 </cabinet>

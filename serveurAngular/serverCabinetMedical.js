@@ -123,7 +123,12 @@ function init(port, applicationServerIP, applicationServerPort) {
         console.log("/addPatient, \nreq.body:\n\t", req.body, "\n_______________________");
         const patient = utils_1.createPatient(req.body);
         const patients = doc.getElementsByTagName("patients")[0];
-        // Is it a new patient or not ?
+        if (utils_1.numeroAlreadyExist(req.body.patientNumber, doc)) {
+            console.error("Error patientNumber already exist:\n");
+            res.writeHead(500);
+            res.end();
+            return;
+        }
         let newPatient = utils_1.getPatient(doc, patient.numéroSécuriteSociale);
         if (!newPatient) {
             utils_1.removePatientFromDoc(newPatient);
