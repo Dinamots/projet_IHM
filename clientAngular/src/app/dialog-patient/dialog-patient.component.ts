@@ -48,6 +48,10 @@ export class DialogPatientComponent implements OnInit {
     this.data.sexe = this.toSexeEnum(e.target.textContent);
   }
 
+  /**
+   *  Renvoie la chaine de caractère lié  au sexeEnum passé en paramètre
+   * @param sexe
+   */
   toString(sexe: sexeEnum): string {
     switch (sexe) {
       case sexeEnum.F:
@@ -59,6 +63,10 @@ export class DialogPatientComponent implements OnInit {
     }
   }
 
+  /**
+   * Renvoie le sexeEnum correspondant au sexe choisis par l'utilisateur dans la fenêtre de dialogue (c'est à dire une string)
+   * @param str
+   */
   toSexeEnum(str: string): sexeEnum {
     switch (str.trim()) {
       case this.sexe[0]:
@@ -70,18 +78,34 @@ export class DialogPatientComponent implements OnInit {
     }
   }
 
+  /**
+   * Retourne le message d'erreur selon l'erreur
+   * @param control
+   */
   getErrorMessage(control: FormControl) {
     return control.hasError('required') ? 'You must enter a value' :
       control.hasError('control') ? 'Not valid' :
         '';
   }
 
+  /**
+   * Met la date récupéré du formulaire au format attendu dans le XML
+   * @param control
+   * @param dataVal
+   * @param value
+   */
   getDate(control: FormControl, dataVal: any, value: Date): any {
     const dateString = this.datepipe.transform(value, 'yyyy-MM-dd');
     return this.getChange(control, dataVal, dateString);
 
   }
 
+  /**
+   * Si la valeur est valide retourne la valeur du champ qui a été modifié
+   * @param control
+   * @param dataVal
+   * @param value
+   */
   getChange(control: FormControl, dataVal: any, value: any): any {
     if (control.valid) {
       return value;
@@ -94,6 +118,9 @@ export class DialogPatientComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  /**
+   * Vérifie que tous les champs mis dedans sont valide
+   */
   isValid() {
     return this.nomControl.valid
       && this.prenomControl.valid

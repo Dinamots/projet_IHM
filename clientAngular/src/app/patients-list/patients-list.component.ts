@@ -48,17 +48,30 @@ export class PatientsListComponent implements OnInit {
     this._infirmiersLength = value;
   }
 
+  /**
+   * Retourne l'interface infirmier à partir de l'index (ou null s'il n'existe pas)
+   * @param index
+   */
   getInfirmier(index: number): InfirmierInterface {
     const infirmier = this.cabinetMedicalService.getInfirmierByIndex(index);
     return infirmier === undefined ? null : infirmier;
   }
 
+  /**
+   * Retourne le patient selon son index et celui de l'infirmier
+   * @param index : index du patient
+   * @param infirmierIndex : Index de l'infirmier (-1 si le patient n'est pas affecté à un infirmier)
+   */
   getPatient(index: number, infirmierIndex: number): PatientInterface {
     return infirmierIndex !== -1
       ? this.cabinetMedicalService.getPatientOfInfirmierByIndex(index, infirmierIndex)
       : this.cabinetMedicalService.getUnaffectedPatientByIndex(index);
   }
 
+  /**
+   * Met à jour le model après un changement lié au drag and drop
+   * @param event
+   */
   changeModelOnDrop(event: CdkDragDrop<any>) {
     if (event.previousContainer !== event.container) {
       transferArrayItem(event.previousContainer.data,
@@ -68,6 +81,10 @@ export class PatientsListComponent implements OnInit {
     }
   }
 
+  /**
+   * Annule le changement du model lié au drag an drop
+   * @param event
+   */
   undoChangeOnDrop(event: CdkDragDrop<any>) {
     if (event.previousContainer !== event.container) {
       transferArrayItem(event.container.data,
@@ -83,6 +100,10 @@ export class PatientsListComponent implements OnInit {
     return string !== null ? +string[0] : -1;
   }
 
+  /**
+   * Gère l'évent de drag an drop
+   * @param event
+   */
   drop(event: CdkDragDrop<any>) {
     console.log(event);
 
@@ -107,6 +128,7 @@ export class PatientsListComponent implements OnInit {
     // this.changeModelOnDrop(event);
 
   }
+
 
   getDropListConnectedTo() {
     const connected = [];
