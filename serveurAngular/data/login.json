@@ -4,7 +4,8 @@
     "infos": {
       "role": "ROLE_INFIRMIER",
       "firtName": "annie",
-      "lastName": "versaire"
+      "lastName": "versaire",
+      "id": "001"
     }
   },
   "cents": {
@@ -12,7 +13,8 @@
     "infos": {
       "role": "ROLE_INFIRMIER",
       "firtName": "sally",
-      "lastName": "cent"
+      "lastName": "cent",
+      "id": "002"
     }
   },
   "nouiee": {
@@ -20,7 +22,8 @@
     "infos": {
       "role": "ROLE_INFIRMIER",
       "firtName": "eva",
-      "lastName": "nouie"
+      "lastName": "nouie",
+      "id": "003"
     }
   },
   "admin": {

@@ -399,4 +399,13 @@ export class CabinetMedicalService {
       password: password
     }).toPromise();
   }
+
+  public getInfirmierById(id: string): InfirmierInterface {
+    return this._cabinet.getValue().infirmiers.reduce((acc, inf) => {
+      if (inf.id === id) {
+        return inf;
+      }
+      return acc;
+    });
+  }
 }

@@ -9,6 +9,7 @@ import {MatDialog} from '@angular/material';
 import {PatientInterface} from '../../dataInterfaces/patient';
 import {DialogPatientComponent} from '../../patient/dialog-patient/dialog-patient.component';
 import {DialogComponent} from '../../dialog/dialog.component';
+import {CabinetInterface} from '../../dataInterfaces/cabinet';
 
 @Component({
   selector: 'app-login',
@@ -17,13 +18,28 @@ import {DialogComponent} from '../../dialog/dialog.component';
 })
 export class LoginComponent {
   message: string;
+  cabinet: CabinetInterface;
 
-  constructor(public authService: AuthService, public router: Router, public dialog: MatDialog) {
+  constructor(public authService: AuthService, public router: Router, public dialog: MatDialog, public cabinetMedicalService: CabinetMedicalService) {
     this.setMessage();
+    this.cabinetMedicalService.cabinet.subscribe(cabinet => {
+      this.cabinet = cabinet;
+    });
   }
 
   setMessage() {
     this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
+  }
+
+  getRedirect(url: string, infos) {
+    switch (url) {
+      case '/infirmier' :
+        return [url, {id: infos.id}];
+      case '/secretary' :
+        return [url];
+      default:
+        return ['**'];
+    }
   }
 
   async login(username, password) {
@@ -36,7 +52,6 @@ export class LoginComponent {
         if (this.authService.isLoggedIn) {
           // Get the redirect URL from our auth service
           // If no redirect has been set, use the default
-          const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/admin';
 
           // Set our navigation extras object
           // that passes on our global query params and fragment
@@ -46,7 +61,7 @@ export class LoginComponent {
           };
 
           // Redirect the user
-          this.router.navigate([redirect], navigationExtras);
+          this.router.navigate(this.getRedirect(this.authService.redirectUrl, infos), navigationExtras);
           this.message = 'login success';
         }
       })

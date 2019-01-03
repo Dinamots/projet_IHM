@@ -1,5 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {InfirmierInterface} from '../dataInterfaces/infirmier';
+import {ActivatedRoute} from '@angular/router';
+import {switchMap} from 'rxjs/operators';
+import {CabinetMedicalService} from '../cabinet-medical.service';
 
 @Component({
   selector: 'app-infirmier',
@@ -11,11 +14,21 @@ export class InfirmierComponent implements OnInit {
   @Input() private _infirmierIndex: number;
   @Input() private _infirmiersLength: number;
 
-  constructor() {
+  constructor(private route: ActivatedRoute, private cabinetMedicalService: CabinetMedicalService) {
 
   }
 
   ngOnInit() {
+    if (this._infirmier === undefined) {
+      console.log('ici');
+      const id: string = this.route.snapshot.paramMap.get('id');
+      console.log(id);
+      this._infirmier = this.cabinetMedicalService.getInfirmierById(id);
+      console.log(this._infirmier);
+      this._infirmierIndex = this.cabinetMedicalService.getInfirmierIndex(this.infirmier);
+    }
+
+
   }
 
   get infirmier(): InfirmierInterface {
