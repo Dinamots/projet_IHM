@@ -24,6 +24,8 @@ import {DatePipe} from '@angular/common';
 import {DialogComponent} from './dialog/dialog.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AppRoutingModule} from './app-routing.module';
+import {AuthModule} from './auth/auth.module';
+import {Router} from '@angular/router';
 
 
 @NgModule({
@@ -58,6 +60,7 @@ import {AppRoutingModule} from './app-routing.module';
     HttpClientModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    AuthModule,
     AppRoutingModule
 
   ],
@@ -68,4 +71,10 @@ import {AppRoutingModule} from './app-routing.module';
 
 })
 export class AppModule {
+  constructor(router: Router) {
+    // Use a custom replacer to display function names in the route configs
+    // const replacer = (key, value) => (typeof value === 'function') ? value.name : value;
+
+    // console.log('Routes: ', JSON.stringify(router.config, replacer, 2));
+  }
 }

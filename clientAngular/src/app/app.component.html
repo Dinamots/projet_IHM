@@ -1,7 +1,8 @@
 <mat-toolbar color="primary">
   <span>Cabinet Infirmier</span>
-  <a routerLink="**" routerLinkActive="active">
+  <a routerLink="/login" routerLinkActive="active">
     <mat-icon>power_settings_new</mat-icon>
   </a>
 </mat-toolbar>
-<router-outlet></router-outlet>
+<router-outlet #routerOutlet="outlet"></router-outlet>
+
