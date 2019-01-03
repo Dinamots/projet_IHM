@@ -1,6 +1,21 @@
 <h2>LOGIN</h2>
 <p>{{message}}</p>
+<div class="mat-form-field" style="display: flex;
+  flex-direction: column;">
+  <mat-form-field>
+    <label>
+      <input #username matInput type="text">
+    </label>
+  </mat-form-field>
+  <mat-form-field>
+    <label>
+      <input #password matInput type="password">
+    </label>
+  </mat-form-field>
+
+</div>
+
 <p>
-  <button (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
-  <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
+  <button (click)="login(username,password)" type="submit" *ngIf="!authService.isLoggedIn">Login</button>
+  <button (click)="logout()" type="submit" *ngIf="authService.isLoggedIn">Logout</button>
 </p>

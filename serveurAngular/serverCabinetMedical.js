@@ -38,11 +38,16 @@ function saveXML(doc, res) {
  *   - port : the TCP port on which the HTTP server will be listening --------------------------------------------------------------
  **/
 function init(port, applicationServerIP, applicationServerPort) {
-    let doc; // will reference the document representing the XML structure
+    let doc;
+    let logs;
+    // will reference the document representing the XML structure
     const applicationServer = {
         ip: applicationServerIP,
         port: applicationServerPort
     };
+    utils_1.getLoginObject().then(l => {
+        logs = l;
+    });
     // Read and parse the XML file containing the data
     fs.readFile(__dirname + "/data/cabinetInfirmier.xml").then((dataBuffer) => {
         try {
@@ -124,29 +129,17 @@ function init(port, applicationServerIP, applicationServerPort) {
         const patient = utils_1.createPatient(req.body);
         const patients = doc.getElementsByTagName("patients")[0];
         if (utils_1.numeroAlreadyExist(req.body.patientNumber, doc)) {
-            console.error("Error patient Number already exist:\n");
-            res.writeHead(500, "Error patientNumber already exist:\n");
-            res.end();
+            utils_1.sendError("Error patientNumber already exist:", 500, res);
             return;
         }
-        let newPatient = utils_1.getPatient(doc, patient.numéroSécuriteSociale);
-        if (!newPatient) {
-            utils_1.removePatientFromDoc(newPatient);
-            patients.appendChild(utils_1.createPatientElem(patient, doc));
-            saveXML(doc, res);
-        }
-        else {
-            console.error("Error patient exist:\n");
-            res.writeHead(500);
-        }
+        patients.appendChild(utils_1.createPatientElem(patient, doc));
+        saveXML(doc, res);
     });
     app.post("/updatePatient", (req, res) => {
         console.log("/updatePatient, \nreq.body:\n\t", req.body, "\n_______________________");
         if (utils_1.numeroAlreadyExist(req.body.patientNumber, doc)
             && req.body.patientNumber !== req.body.object.numeroSecuriteSociale) {
-            console.error("Error patientNumber already exist:\n");
-            res.writeHead(500);
-            res.end();
+            utils_1.sendError("Error patientNumber already exist:", 500, res);
             return;
         }
         const patient = utils_1.createPatient(req.body);
@@ -184,6 +177,17 @@ function init(port, applicationServerIP, applicationServerPort) {
                 res.writeHead(500);
                 res.end("There is no nurse identified by id", req.body.infirmier);
             }
+        }
+    });
+    app.post("/loginRequest", (req, res) => {
+        let infos = utils_1.getInfo(req.body.username, req.body.password, logs);
+        console.log(infos);
+        if (!infos) {
+            utils_1.sendError("Error wrong username or password", 403, res);
+        }
+        else {
+            utils_1.sendValue(infos, 200, res);
+            console.log(res);
         }
     });
     // Define HTTP ressource POST /INFIRMIERE

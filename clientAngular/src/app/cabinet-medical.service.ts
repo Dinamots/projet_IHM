@@ -393,4 +393,10 @@ export class CabinetMedicalService {
     }, 0);
   }
 
+  public login(username: string, password: string): Promise<object> {
+    return this.http.post('/loginRequest', {
+      username: username,
+      password: password
+    }).toPromise();
+  }
 }

@@ -26,6 +26,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AppRoutingModule} from './app-routing.module';
 import {AuthModule} from './auth/auth.module';
 import {Router} from '@angular/router';
+import {LoginComponent} from './auth/login/login.component';
 
 
 @NgModule({

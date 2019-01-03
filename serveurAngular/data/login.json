@@ -1,0 +1,32 @@
+{
+  "versairea": {
+    "password": "default",
+    "infos": {
+      "role": "ROLE_INFIRMIER",
+      "firtName": "annie",
+      "lastName": "versaire"
+    }
+  },
+  "cents": {
+    "password": "default",
+    "infos": {
+      "role": "ROLE_INFIRMIER",
+      "firtName": "sally",
+      "lastName": "cent"
+    }
+  },
+  "nouiee": {
+    "password": "default",
+    "infos": {
+      "role": "ROLE_INFIRMIER",
+      "firtName": "eva",
+      "lastName": "nouie"
+    }
+  },
+  "admin": {
+    "password": "admin",
+    "infos": {
+      "role": "ROLE_SECRETAIRE"
+    }
+  }
+}
