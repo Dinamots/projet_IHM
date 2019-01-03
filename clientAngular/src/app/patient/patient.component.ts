@@ -21,6 +21,9 @@ export class PatientComponent implements OnInit {
     console.log(this.patient);
   }
 
+  /**
+   * Va ouvrir la fenêtre de mise à jour/ajout d'un client lorsqu'on clique sur les boutons correspondants !
+   */
   openDialog(): void {
     const oldPatient: PatientInterface = JSON.parse(JSON.stringify(this.patient));
     const dialogRef = this.dialog.open(DialogPatientComponent, {
@@ -47,6 +50,9 @@ export class PatientComponent implements OnInit {
     });
   }
 
+  /**
+   * Fonction qui va remove le patient sur lequel on a cliqué
+   */
   remove() {
     this.cabinetMedicalService.removePatient(this.patient)
       .catch(err => {

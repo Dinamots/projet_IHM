@@ -20,6 +20,10 @@ export class SecretaryComponent implements OnInit {
     });
   }
 
+  /**
+   * Fonction qui va gérer toute l'IHM de la sécrétaire
+   */
+
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogPatientComponent, {
       width: '250px',

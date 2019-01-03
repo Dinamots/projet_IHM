@@ -31,10 +31,18 @@ export class CabinetMedicalService {
     return this._cabinet.asObservable();
   }
 
+  /**
+   * Retourne la valeur du noeud dont le nom est passé en paramètre
+   * @param node : L'élément
+   * @param tagName : Le nom du noeud dont on veut la valeur
+   */
   private getNodeValue(node: Element, tagName: string): string {
     return node.getElementsByTagName(tagName).length ? node.getElementsByTagName(tagName).item(0).textContent : null;
   }
-
+  /**
+   * Retourne l'enum du sexe en fonction du caractère reçu en paramètre
+   * @param sexe
+   */
   private stringToSexe(sexe: string): sexeEnum {
     switch (sexe) {
       case 'F' :
@@ -46,6 +54,10 @@ export class CabinetMedicalService {
     }
   }
 
+  /**
+   * Retourne une interface Adresse à partir d'un Noeud <adresse>
+   * @param adresse : Noeud adresse
+   */
   private getAdresse(adresse: Element): Adresse {
     return {
       ville: this.getNodeValue(adresse, 'ville'),
@@ -56,7 +68,10 @@ export class CabinetMedicalService {
     };
   }
 
-
+  /**
+   * Retourne une interface patient remplie à l'aide du noeud patient passé en paramètre
+   * @param patient
+   */
   private getPatient(patient: Element): PatientInterface {
     return {
       prenom: this.getNodeValue(patient, 'prénom'),
@@ -68,11 +83,20 @@ export class CabinetMedicalService {
     };
   }
 
+  /**
+   * Retourne le le Document à partir du chemin vers le fichier
+   * @param text
+   */
   private getDoc(text: string): Document {
     const parser: DOMParser = new DOMParser();
     return parser.parseFromString(text, 'application/xml');
   }
 
+  /**
+   * Retourne un tableua d'interface de patient qui correspond à nous les patients qui ne sont pas affectés à un infirmier
+   * @param patients : Tableau d'interface de patient contenant tous les patients
+   * @param infirmiers : Tableau d'interface d'infirmier contenant tous les infirmiers
+   */
   private getPatientsAlone(patients: Element, infirmiers: InfirmierInterface[]): PatientInterface[] {
     // return [];
     const patientsInterface: PatientInterface[] = [];
@@ -84,13 +108,22 @@ export class CabinetMedicalService {
     // return [];
   }
 
+  /**
+   * Dis si un patient est affecté ou non à un infirmier
+   * @param patient : Le patient
+   * @param infirmiers : Tableau d'interface d'infirmier
+   */
   private isAlone(patient: Element, infirmiers: InfirmierInterface[]): boolean {
     return infirmiers.filter(infirmier => {
       return infirmier.patients.filter(p => p.numeroSecuriteSociale === this.getPatient(patient).numeroSecuriteSociale).length === 1;
     }).length === 0;
   }
 
-
+  /**
+   * Retourne l'inteface infirmier à l'aide du noeud infirmier et du noeud patients
+   * @param infirmier
+   * @param patients
+   */
   private getInfirmier(infirmier: Element, patients: Element): InfirmierInterface {
     const id = infirmier.getAttribute('id');
     return {
@@ -103,6 +136,11 @@ export class CabinetMedicalService {
     };
   }
 
+  /**
+   * Retourne la liste des infirmeirs dans un tableau d'interface Infirmier
+   * @param infirmiers : Noeud Infirmiers
+   * @param patients : Noeud Patients
+   */
   private getInfirmiers(infirmiers: Element, patients: Element): InfirmierInterface[] {
     const infirmierList = Array.from((infirmiers.getElementsByTagName('infirmier')));
     return infirmierList.reduce((acc, x) => {
@@ -111,7 +149,11 @@ export class CabinetMedicalService {
     }, []);
   }
 
-
+  /**
+   * récupère les patients de l'infirmier dont l'id est passé en paramètre
+   * @param patients : Noeud <patients>
+   * @param intervenant : l'id de l'intervenant
+   */
   private getPatientsInfirmier(patients: Element, intervenant: string): PatientInterface[] {
     const patientList: Array<Element> = Array.from(patients.getElementsByTagName('patient'));
     return patientList.reduce((acc, x) => {
@@ -123,6 +165,10 @@ export class CabinetMedicalService {
 
   }
 
+  /**
+   * Renvoie l'interface CabinetInterface à partir du document en utilisant les fonctions ci-dessus.
+   * @param doc
+   */
   private getCabinetInterface(doc: Document): CabinetInterface {
     const infirmiers = this.getInfirmiers(doc.querySelector('infirmiers'), doc.querySelector('patients'));
     return {
@@ -132,6 +178,10 @@ export class CabinetMedicalService {
     };
   }
 
+  /**
+   * Retourne une promesse de cabinet interface à partir d'un chemin vers le fichier xml passé en paramètre
+   * @param url : chemin vers les fichiers xml
+   */
   async getData(url: string): Promise<CabinetInterface> {
     const res = await this.http.get(url, {responseType: 'text'}).toPromise();
     const doc = this.getDoc(res.toString());
@@ -141,16 +191,16 @@ export class CabinetMedicalService {
     });
   }
 
+  /**
+   * Met à jour le model après la suppression  d'un patient
+   * @param patient : L'interface du patient à supprimer
+   */
   public removePatientModel(patient: PatientInterface) {
     const infirmier: InfirmierInterface = this.getInfirmierOfPatient(patient);
     if (infirmier != null) {
       const infirmierIndex = this.getInfirmierIndex(infirmier);
-      console.log(infirmierIndex);
       const patientIndex = this.getPatientIndexOfInfirmier(infirmierIndex, patient);
-      console.log(patientIndex);
-      console.log(this._cabinet.getValue().infirmiers[infirmierIndex].patients);
       this._cabinet.getValue().infirmiers[infirmierIndex].patients.splice(patientIndex, 1);
-      console.log(this._cabinet.getValue().infirmiers[infirmierIndex].patients);
     } else {
       const patientIndex = this.getIndexOfUnaffectedPatient(patient);
       this._cabinet.getValue().patientsNonAffectes.splice(patientIndex, 1);
@@ -158,15 +208,29 @@ export class CabinetMedicalService {
 
   }
 
+  /**
+   * Va faire appel à patient request pour supprimer le patient
+   * @param patient
+   */
   public removePatient(patient: PatientInterface): Promise<Object> {
     return this.patientRequest(patient, '/removePatient');
   }
 
+  /**
+   * Va faire appel à patient request pour update le patient
+   * @param patient
+   * @param oldPatient
+   */
   public updatePatient(patient: PatientInterface, oldPatient: PatientInterface): Promise<Object> {
     return this.patientRequest(patient, '/updatePatient', oldPatient);
   }
 
-
+  /**
+   * Foonction qui va faire appel au serveur pour effectuer l'action demander par l'utilisateur
+   * @param patient : le patient concerné
+   * @param url : l'url correspondant à l'action
+   * @param object : Un pbjet (dans le cas de l'update patient un patient) qui est facultatif)
+   */
   private patientRequest(patient: PatientInterface, url: string, object?: object): Promise<Object> {
     return this.http.post(url, {
       patientName: patient.nom,
@@ -183,19 +247,37 @@ export class CabinetMedicalService {
     }).toPromise();
   }
 
+  /**
+   * Fait appel à la fonction affectaion requestion pour affecter un patient à un infirmier
+   * @param infirmier : L'infirmeir auquel on va affecter le patient
+   * @param patient : Le patient auquel on va affecter le patient
+   */
   affectation(infirmier: InfirmierInterface, patient: PatientInterface): Promise<Object> {
     console.log('affectation');
     return this.affectationRequest(infirmier !== null ? infirmier.id : 'none', patient);
   }
 
+  /**
+   * Va mettre à jour le modele après l'ajout d'un patient
+   * @param patient
+   */
   addPatientModel(patient: PatientInterface) {
     this._cabinet.getValue().patientsNonAffectes.push(patient);
   }
 
+  /**
+   * Fait appel à patient request pour ajouter un patient
+   * @param patient : L'interface du patient à ajouter
+   */
   addPatient(patient: PatientInterface): Promise<Object> {
     return this.patientRequest(patient, '/addPatient');
   }
 
+  /**
+   * Fonction qui met à jour le model après la désacffectation d'un patient
+   * N'est pas utilisé pour le moment
+   * @param patient
+   */
   desaffectationModel(patient: PatientInterface) {
     const infirmierIndex = this.getInfirmierIndex(this.getInfirmierOfPatient(patient));
     if (infirmierIndex !== -1) {
@@ -206,11 +288,20 @@ export class CabinetMedicalService {
 
   }
 
+  /**
+   * fait appel à affectation request pour désacffecter un patient
+   * @param patient
+   */
   desaffectation(patient: PatientInterface): Promise<Object> {
     console.log('desaffectation');
     return this.affectationRequest('none', patient);
   }
 
+  /**
+   * Fait appel au serveur pour gérer l'affectation ou la désacffectation d'un patient
+   * @param infirmierId
+   * @param patient
+   */
   private affectationRequest(infirmierId: string, patient: PatientInterface): Promise<Object> {
     return this.http.post('/affectation', {
       infirmier: infirmierId,
@@ -218,14 +309,27 @@ export class CabinetMedicalService {
     }).toPromise();
   }
 
+  /**
+   * Retourne l'indice de l'infirmier passé en paramètre dans le tableau des infirmiers
+   * @param infirmier
+   */
   public getInfirmierIndex(infirmier: InfirmierInterface): number {
     return this._cabinet.getValue().infirmiers.indexOf(infirmier);
   }
 
+  /**
+   * Retourne l'interface infirmier de l'infirmier à l'indice passé en paramètre
+   * @param index
+   */
   public getInfirmierByIndex(index: number): InfirmierInterface {
     return this._cabinet.getValue().infirmiers[index];
   }
 
+  /**
+   * Retourne l'indice du patient par rapport à la liste des patients de l'infirmier passé en paramètre
+   * @param infirmierIndex
+   * @param patient
+   */
   public getPatientIndexOfInfirmier(infirmierIndex: number, patient: PatientInterface): number {
     return this._cabinet.getValue().infirmiers[infirmierIndex].patients.reduce((acc, x, i) => {
       if (x === patient) {
@@ -236,10 +340,19 @@ export class CabinetMedicalService {
 
   }
 
+  /**
+   * Retourne l'interface patient correspond au patient parmis les patients de l'infirmier dont l'index est passé en paramètre
+   * @param index : Index du patient
+   * @param infirmierIndex : Index de l'infirmmier.
+   */
   public getPatientOfInfirmierByIndex(index: number, infirmierIndex: number): PatientInterface {
     return this._cabinet.getValue().infirmiers[infirmierIndex].patients[index];
   }
 
+  /**
+   * retourne l'infirmier intervenant pour le patient passé en paramètre (s'il y en a un).
+   * @param patient
+   */
   public getInfirmierOfPatient(patient: PatientInterface): InfirmierInterface {
     let infirmier, infIndex;
     const infTab = this._cabinet.getValue().infirmiers.filter(inf => {
@@ -258,10 +371,18 @@ export class CabinetMedicalService {
 
   }
 
+  /**
+   * Retourne l'interface d'un patient non affectés en fonction de son index.
+   * @param index
+   */
   public getUnaffectedPatientByIndex(index: number): PatientInterface {
     return this._cabinet.getValue().patientsNonAffectes[index];
   }
 
+  /**
+   *  Retourne l'index du patient non affecté passé en paramètre !!
+   * @param patient
+   */
   public getIndexOfUnaffectedPatient(patient: PatientInterface): number {
     return this._cabinet.getValue().patientsNonAffectes.reduce((acc, x, i) => {
       if (x === patient) {
