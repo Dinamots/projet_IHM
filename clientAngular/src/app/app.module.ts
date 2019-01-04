@@ -6,7 +6,7 @@ import {SecretaryComponent} from './secretary/secretary.component';
 import {HttpClientModule} from '@angular/common/http';
 import {InfirmierComponent} from './infirmier/infirmier.component';
 import {PatientComponent} from './patient/patient.component';
-import {InfirmiersListComponent} from './infirmiers-list/infirmiers-list.component';
+import {InfirmiersListComponent} from './infirmier/infirmiers-list/infirmiers-list.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatBadgeModule,
@@ -17,11 +17,16 @@ import {
   MatListModule, MatSelectModule, MatToolbarModule, MatNativeDateModule
 } from '@angular/material';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import {PatientsListComponent} from './patients-list/patients-list.component';
-import {DialogPatientComponent} from './dialog-patient/dialog-patient.component';
+import {PatientsListComponent} from './patient/patients-list/patients-list.component';
+import {DialogPatientComponent} from './patient/dialog-patient/dialog-patient.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DatePipe} from '@angular/common';
 import {DialogComponent} from './dialog/dialog.component';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AuthModule} from './auth/auth.module';
+import {Router} from '@angular/router';
+import {LoginComponent} from './auth/login/login.component';
 
 
 @NgModule({
@@ -34,6 +39,7 @@ import {DialogComponent} from './dialog/dialog.component';
     PatientsListComponent,
     DialogPatientComponent,
     DialogComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -54,7 +60,9 @@ import {DialogComponent} from './dialog/dialog.component';
     BrowserModule,
     HttpClientModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    AuthModule,
+    AppRoutingModule
 
   ],
   providers: [DatePipe],
@@ -64,4 +72,10 @@ import {DialogComponent} from './dialog/dialog.component';
 
 })
 export class AppModule {
+  constructor(router: Router) {
+    // Use a custom replacer to display function names in the route configs
+    // const replacer = (key, value) => (typeof value === 'function') ? value.name : value;
+
+    // console.log('Routes: ', JSON.stringify(router.config, replacer, 2));
+  }
 }

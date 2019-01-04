@@ -1,1 +1,27 @@
-<app-secretary></app-secretary>
+<mat-toolbar color="primary">
+  <span>Cabinet Infirmier</span>
+  <a *ngIf="isSecretary()" routerLink="/secretary"
+     routerLinkActive="active">
+    <mat-icon>home</mat-icon>
+  </a>
+  <a *ngIf="isInfirmier()" routerLink="/infirmier"
+     routerLinkActive="active">
+    <mat-icon>home</mat-icon>
+  </a>
+  <a routerLink="/login" routerLinkActive="active" (click)="logout()">
+    <mat-icon>power_settings_new</mat-icon>
+  </a>
+  <div *ngIf="isLogged()">
+    <span>
+      {{getFirstName()}}
+    </span>
+    <span>
+      {{getLastName()}}
+    </span>
+
+  </div>
+</mat-toolbar>
+<div>
+  <router-outlet #routerOutlet="outlet"></router-outlet>
+</div>
+

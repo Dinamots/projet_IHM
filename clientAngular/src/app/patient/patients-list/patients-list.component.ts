@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {PatientInterface} from '../dataInterfaces/patient';
+import {PatientInterface} from '../../dataInterfaces/patient';
 import {CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import {CabinetMedicalService} from '../cabinet-medical.service';
-import {InfirmierInterface} from '../dataInterfaces/infirmier';
+import {CabinetMedicalService} from '../../cabinet-medical.service';
+import {InfirmierInterface} from '../../dataInterfaces/infirmier';
 import {fadeInItems} from '@angular/material';
 import {catchError} from 'rxjs/operators';
 

@@ -1,3 +1,5 @@
+import * as fs from "fs-extra";
+
 export function createElem(name: string, value: string, doc: Document): Element {
     const newElem = doc.createElement(name);
     newElem.appendChild(doc.createTextNode(value));
@@ -83,5 +85,28 @@ export function numeroAlreadyExist(socialSecurityNumber: string, doc: Document):
 export function getPatient(doc: XMLDocument, socialSecurityNumber: string): Element {
     const L: Element[] = Array.from(doc.getElementsByTagName("patient")); // doc.getElementsByTagName('patient');
     return L.find(E => E.getElementsByTagName("numéro")[0].textContent === socialSecurityNumber);
+}
+
+export async function getLoginObject() {
+    let dataBuff = await fs.readFile(__dirname + "/data/login.json");
+    return JSON.parse(dataBuff.toString());
+}
+
+export function sendError(msg: string, code: number, res) {
+    console.error(msg + "\n");
+    res.writeHead(code, msg + "\n");
+    res.end();
+}
+
+export function sendValue(value: object, code: number, res) {
+    res.send(value);
+    res.end();
+}
+
+export function getInfo(username: string, password: string, logs) {
+    let user = logs[username];
+    if (user) {
+        return user.password === password ? user.infos : null;
+    }
 }
 

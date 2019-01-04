@@ -9,7 +9,15 @@ import * as multer from "multer";
 import * as request from "request";
 import * as staticGzip from "http-static-gzip-regexp";
 import {create} from "domain";
-import {numeroAlreadyExist, createPatient, createPatientElem, getIntervenantOfPatient, getPatient, removePatientFromDoc} from "./utils";
+import {
+    numeroAlreadyExist,
+    createPatient,
+    createPatientElem,
+    getIntervenantOfPatient,
+    getPatient,
+    removePatientFromDoc,
+    getLoginObject, getInfo, sendError, sendValue
+} from "./utils";
 // import * as libXML from "libxmljs";
 // import * as soap from "soap";
 
@@ -43,11 +51,18 @@ function saveXML(doc: XMLDocument, res: express.Response) {
  *   - port : the TCP port on which the HTTP server will be listening --------------------------------------------------------------
  **/
 function init(port, applicationServerIP, applicationServerPort) {
-    let doc: Document;		    // will reference the document representing the XML structure
+    let doc: Document;
+    let logs: Object;
+    // will reference the document representing the XML structure
     const applicationServer = { // Application server IP and port that is in charge of optimizing nurses' travels, by default, this server
         ip: applicationServerIP,
         port: applicationServerPort
     };
+
+    getLoginObject().then(l => {
+        logs = l;
+    });
+
 
     // Read and parse the XML file containing the data
     fs.readFile(__dirname + "/data/cabinetInfirmier.xml").then(
@@ -78,7 +93,7 @@ function init(port, applicationServerIP, applicationServerPort) {
     // Define HTTP ressource GET /
     app.get("/"
         , (req, res) => {											// req contains the HTTP request, res is the response stream
-                                                                     // console.log('Getting /');
+            // console.log('Getting /');
             fs.readFile(__dirname + "/start.html").then(
                 (data) => {
                     // Parse it so that we can add secretary and all nurses
@@ -148,22 +163,12 @@ function init(port, applicationServerIP, applicationServerPort) {
             const patient = createPatient(req.body);
             const patients = doc.getElementsByTagName("patients")[0];
             if (numeroAlreadyExist(req.body.patientNumber, doc)) {
-                console.error("Error patientNumber already exist:\n");
-                res.writeHead(500, "Error patientNumber already exist:\n");
-                res.end();
+                sendError("Error patientNumber already exist:", 500, res);
                 return;
             }
 
-            let newPatient = getPatient(doc, patient.numéroSécuriteSociale);
-            if (!newPatient) {
-                removePatientFromDoc(newPatient);
-                patients.appendChild(createPatientElem(patient, doc));
-                saveXML(doc, res);
-            } else {
-                console.error("Error patient exist:\n");
-                res.writeHead(500);
-            }
-
+            patients.appendChild(createPatientElem(patient, doc));
+            saveXML(doc, res);
         }
     );
 
@@ -171,9 +176,7 @@ function init(port, applicationServerIP, applicationServerPort) {
         console.log("/updatePatient, \nreq.body:\n\t", req.body, "\n_______________________");
         if (numeroAlreadyExist(req.body.patientNumber, doc)
             && req.body.patientNumber !== req.body.object.numeroSecuriteSociale) {
-            console.error("Error patientNumber already exist:\n");
-            res.writeHead(500);
-            res.end();
+            sendError("Error patientNumber already exist:", 500, res);
             return;
         }
 
@@ -214,6 +217,16 @@ function init(port, applicationServerIP, applicationServerPort) {
             }
         }
     );
+
+    app.post("/loginRequest", (req, res) => {
+        let infos = getInfo(req.body.username, req.body.password, logs);
+        console.log(infos);
+        if (!infos) {
+            sendError("Error wrong username or password", 403, res);
+        } else {
+            sendValue(infos, 200, res);
+        }
+    });
 
     // Define HTTP ressource POST /INFIRMIERE
     app.post("/INFIRMIERE", (req, res) => {

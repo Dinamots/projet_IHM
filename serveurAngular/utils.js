@@ -1,5 +1,14 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const fs = require("fs-extra");
 function createElem(name, value, doc) {
     const newElem = doc.createElement(name);
     newElem.appendChild(doc.createTextNode(value));
@@ -84,4 +93,29 @@ function getPatient(doc, socialSecurityNumber) {
     return L.find(E => E.getElementsByTagName("numéro")[0].textContent === socialSecurityNumber);
 }
 exports.getPatient = getPatient;
+function getLoginObject() {
+    return __awaiter(this, void 0, void 0, function* () {
+        let dataBuff = yield fs.readFile(__dirname + "/data/login.json");
+        return JSON.parse(dataBuff.toString());
+    });
+}
+exports.getLoginObject = getLoginObject;
+function sendError(msg, code, res) {
+    console.error(msg + "\n");
+    res.writeHead(code, msg + "\n");
+    res.end();
+}
+exports.sendError = sendError;
+function sendValue(value, code, res) {
+    res.send(value);
+    res.end();
+}
+exports.sendValue = sendValue;
+function getInfo(username, password, logs) {
+    let user = logs[username];
+    if (user) {
+        return user.password === password ? user.infos : null;
+    }
+}
+exports.getInfo = getInfo;
 //# sourceMappingURL=utils.js.map
