@@ -3,6 +3,7 @@ import {ActivatedRoute, ActivatedRouteSnapshot, Router, RouterStateSnapshot} fro
 import {EMPTY, Observable, of} from 'rxjs';
 import {InfirmierInterface} from '../dataInterfaces/infirmier';
 import {CabinetMedicalService} from '../cabinet-medical.service';
+import {LocalStorageService} from '../services/local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class InfirmierService {
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<InfirmierInterface> | Observable<never> {
-    const id = route.paramMap.get('id');
-    const infirmier = this.cabinetMedicalService.getInfirmierById(id);
+    const loginData = LocalStorageService.getLogin();
+    const infirmier = this.cabinetMedicalService.getInfirmierById(loginData.id);
     return infirmier ? of(infirmier) : EMPTY;
   }
 

@@ -187,7 +187,6 @@ function init(port, applicationServerIP, applicationServerPort) {
         }
         else {
             utils_1.sendValue(infos, 200, res);
-            console.log(res);
         }
     });
     // Define HTTP ressource POST /INFIRMIERE

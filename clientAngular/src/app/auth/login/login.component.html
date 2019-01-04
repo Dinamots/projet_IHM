@@ -34,10 +34,4 @@
     *ngIf="!authService.isLoggedIn && passwordControl.valid && usernameControl.valid"
   >Login
   </button>
-  <button
-    (click)="logout()"
-    type="submit"
-    *ngIf="authService.isLoggedIn"
-  >Logout
-  </button>
 </p>

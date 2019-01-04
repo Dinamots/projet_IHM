@@ -67,7 +67,7 @@ export class LoginComponent {
           };
 
           // Redirect the user
-          this.router.navigate(this.getRedirect(this.authService.redirectUrl, infos), navigationExtras);
+          this.router.navigate([this.authService.redirectUrl], navigationExtras);
           this.message = 'login success';
         }
       })
