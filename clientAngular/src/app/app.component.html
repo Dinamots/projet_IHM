@@ -1,5 +1,11 @@
 <mat-toolbar color="primary">
   <span>Cabinet Infirmier</span>
+  <a *ngIf="authService.isLoggedIn === true && authService.role === 'ROLE_SECRETAIRE'" routerLink="/secretary" routerLinkActive="active">
+    <mat-icon>home</mat-icon>
+  </a>
+  <a *ngIf="authService.isLoggedIn == true && authService.role === 'ROLE_INFIRMIER'" routerLink="/infirmier" routerLinkActive="active">
+    <mat-icon>home</mat-icon>
+  </a>
   <a routerLink="/login" routerLinkActive="active">
     <mat-icon>power_settings_new</mat-icon>
   </a>

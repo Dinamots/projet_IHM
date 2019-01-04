@@ -13,6 +13,8 @@ export class AuthService {
   // store the URL so we can redirect after logging in
   redirectUrl: string;
 
+  role: string;
+
   constructor(private cabinetMedicalService: CabinetMedicalService) {
   }
 
@@ -30,6 +32,7 @@ export class AuthService {
   async login(username: string, password: string): Promise<any> {
     const infos: any = await this.cabinetMedicalService.login(username, password);
     this.isLoggedIn = !!infos;
+    this.role = infos.role;
     this.redirectUrl = this.getRedirectUrl(infos.role);
     return infos;
   }

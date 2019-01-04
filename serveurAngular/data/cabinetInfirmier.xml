@@ -72,7 +72,7 @@
             n°1 ce jour là.
             Lors de la dernière visite, l'intervenant doit aussi enlever les 25 points de suture de son opération.
             -->
-            <visite date="2014-12-08" intervenant="003">
+            <visite date="2014-12-08" intervenant="001">
                 <acte id="109"/>
             </visite>
 
@@ -97,7 +97,7 @@
             jour et injection intraveineuse directe isolée d'anthalgiques les
             autres jours.
             -->
-            <visite date="2014-12-08" intervenant="002">
+            <visite date="2014-12-08" intervenant="003">
                 <acte id="101"/>
                 <acte id="104"/>
             </visite>
@@ -121,7 +121,7 @@
             Le jeune Xavier est en cours de désensibilation alergique.
             Il doit recevoir tous les jours, l'injection de plusieurs allergènes, etc.
             -->
-            <visite date="2014-12-08" intervenant="001">
+            <visite date="2014-12-08" intervenant="002">
                 <acte id="111"/>
             </visite>
 
@@ -147,5 +147,5 @@
         </patient>
 
 
-    <patient><nom>Orougea</nom><prénom>Elvire</prénom><numéro>280036902305219</numéro><sexe>F</sexe><naissance>1980-03-08</naissance><visite date="2014-12-08" intervenant="002"/><adresse><étage></étage><numéro></numéro><rue>Rond-Point de la Croix de Vie</rue><ville>La Tronche</ville><codePostal>38700</codePostal></adresse></patient></patients>
+    <patient><nom>Orougea</nom><prénom>Elvire</prénom><numéro>280036902305219</numéro><sexe>F</sexe><naissance>1980-03-08</naissance><visite date="2014-12-08" intervenant="002"/><adresse><étage/><numéro/><rue>Rond-Point de la Croix de Vie</rue><ville>La Tronche</ville><codePostal>38700</codePostal></adresse></patient></patients>
 </cabinet>

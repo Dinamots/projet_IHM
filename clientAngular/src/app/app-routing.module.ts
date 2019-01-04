@@ -4,10 +4,16 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {SecretaryComponent} from './secretary/secretary.component';
 import {AuthGuard} from './auth/auth.guard';
 import {InfirmierComponent} from './infirmier/infirmier.component';
+import {InfirmierService} from './infirmier/infirmier.service';
 
 const appRoutes: Routes = [
   {path: 'secretary', component: SecretaryComponent, canActivate: [AuthGuard]},
-  {path: 'infirmier', component: InfirmierComponent, canActivate: [AuthGuard]},
+  {
+    path: 'infirmier',
+    component: InfirmierComponent,
+    canActivate: [AuthGuard],
+    resolve: {infirmier: InfirmierService}
+  },
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];
@@ -16,7 +22,7 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      {enableTracing: false} // <-- debugging purposes only
+      {enableTracing: false}
     )
   ],
   exports: [

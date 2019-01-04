@@ -10,6 +10,7 @@ import {PatientInterface} from '../../dataInterfaces/patient';
 import {DialogPatientComponent} from '../../patient/dialog-patient/dialog-patient.component';
 import {DialogComponent} from '../../dialog/dialog.component';
 import {CabinetInterface} from '../../dataInterfaces/cabinet';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,11 @@ import {CabinetInterface} from '../../dataInterfaces/cabinet';
 export class LoginComponent {
   message: string;
   cabinet: CabinetInterface;
+  username: string;
+  password: string;
+
+  public usernameControl: FormControl = new FormControl(this.username, [Validators.required]);
+  public passwordControl: FormControl = new FormControl(this.password, [Validators.required]);
 
   constructor(public authService: AuthService, public router: Router, public dialog: MatDialog, public cabinetMedicalService: CabinetMedicalService) {
     this.setMessage();
@@ -45,7 +51,7 @@ export class LoginComponent {
   async login(username, password) {
     this.message = 'Trying to log in ...';
     console.log(username);
-    this.authService.login(username.value, password.value)
+    this.authService.login(username, password)
       .then(infos => {
         console.log(infos);
         this.setMessage();
@@ -67,13 +73,17 @@ export class LoginComponent {
       })
       .catch(err => {
         this.message = 'can\'t login';
+        this.resetValues();
         console.log(err);
         this.openDialog();
       });
-    username.value = '';
-    password.value = '';
 
 
+  }
+
+  resetValues() {
+    this.usernameControl.setValue('');
+    this.passwordControl.setValue('');
   }
 
   openDialog(): void {

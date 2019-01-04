@@ -20,7 +20,7 @@ div.list {
   display: inline-block;
 }
 
-h2.mat-h2 {
+div.main-container div h2.mat-h2 {
   margin-left: 25%;
 }
 

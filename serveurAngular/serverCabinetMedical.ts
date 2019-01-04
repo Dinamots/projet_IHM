@@ -225,7 +225,6 @@ function init(port, applicationServerIP, applicationServerPort) {
             sendError("Error wrong username or password", 403, res);
         } else {
             sendValue(infos, 200, res);
-            console.log(res);
         }
     });
 
