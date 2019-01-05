@@ -1,11 +1,13 @@
 import {Injectable} from '@angular/core';
 import {
-  CanActivate, Router,
   ActivatedRouteSnapshot,
-  RouterStateSnapshot,
+  CanActivate,
   CanActivateChild,
+  CanLoad,
   NavigationExtras,
-  CanLoad, Route
+  Route,
+  Router,
+  RouterStateSnapshot
 } from '@angular/router';
 import {AuthService} from './auth.service';
 
@@ -18,8 +20,18 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const url: string = state.url;
+    if (this.acceptRedirect(url)) {
+      return this.checkLogin(url);
+    }
+    this.navigate('/login');
+    return false;
+  }
 
-    return this.checkLogin(url);
+  navigate(url) {
+    // Store the attempted URL for redirecting
+    this.authService.redirectUrl = url;
+    // Navigate to the login page with extras
+    this.router.navigate([url]);
   }
 
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
@@ -32,27 +44,28 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     return this.checkLogin(url);
   }
 
+  acceptRedirect(url: string) {
+    switch (url) {
+      case '/infirmier':
+        if (this.authService.loginData) {
+          return this.authService.loginData.role === 'ROLE_INFIRMIER';
+        }
+        return false;
+      case '/secretary':
+        if (this.authService.loginData) {
+          return this.authService.loginData.role === 'ROLE_SECRETAIRE';
+        }
+        return false;
+      default:
+        return false;
+    }
+  }
+
   checkLogin(url: string): boolean {
     if (this.authService.isLoggedIn) {
-      console.log(this.authService.isLoggedIn);
       return true;
     }
-    console.log(this.authService.isLoggedIn);
-    // Store the attempted URL for redirecting
-    this.authService.redirectUrl = url;
-
-    // Create a dummy session id
-    const sessionId = 123456789;
-
-    // Set our navigation extras object
-    // that contains our global query params and fragment
-    const navigationExtras: NavigationExtras = {
-      queryParams: {'session_id': sessionId},
-      fragment: 'anchor'
-    };
-
-    // Navigate to the login page with extras
-    this.router.navigate(['/login'], navigationExtras);
+    this.navigate(url);
     return false;
   }
 }

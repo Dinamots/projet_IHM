@@ -94,7 +94,7 @@ export async function getLoginObject() {
 
 export function sendError(msg: string, code: number, res) {
     console.error(msg + "\n");
-    res.writeHead(code, msg + "\n");
+    res.writeHead(code, msg);
     res.end();
 }
 

@@ -2,17 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e9660c0-427f-4238-ab36-590c0af987b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../clientAngular/src/app/dataInterfaces/loginInterface.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/auth/auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/auth/auth.guard.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/auth/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/auth/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/auth/login/login.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/auth/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/auth/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmier.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmier.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/services/local-storage.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/services/local-storage.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/login.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/login.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/serverCabinetMedical.js" beforeDir="false" afterPath="$PROJECT_DIR$/serverCabinetMedical.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serverCabinetMedical.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/serverCabinetMedical.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/utils.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,22 +26,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/cabinetInfirmier.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1495">
+            <state relative-caret-position="1105">
               <caret line="65" column="76" selection-start-line="65" selection-start-column="76" selection-end-line="65" selection-end-column="76" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/data/actes.xml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/serverCabinetMedical.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4784">
-              <caret line="224" column="57" selection-start-line="224" selection-start-column="57" selection-end-line="224" selection-end-column="57" />
+            <state relative-caret-position="-5">
+              <caret line="191" column="43" selection-start-line="191" selection-start-column="43" selection-end-line="191" selection-end-column="43" />
               <folding>
                 <element signature="e#270#301#0" expanded="true" />
               </folding>
@@ -51,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/utils.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2415">
-              <caret line="105" column="16" selection-start-line="105" selection-start-column="16" selection-end-line="105" selection-end-column="16" />
+            <state relative-caret-position="403">
+              <caret line="96" column="29" lean-forward="true" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -63,17 +56,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/login.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="11" column="24" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/serverCabinetMedical.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4301">
-              <caret line="187" column="14" lean-forward="true" selection-start-line="187" selection-start-column="14" selection-end-line="187" selection-end-column="14" />
+            <state relative-caret-position="238">
+              <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -81,7 +65,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/cabinet.xsd">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="828">
+            <state relative-caret-position="612">
               <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
             </state>
           </provider>
@@ -120,18 +104,17 @@
         <option value="$PROJECT_DIR$/serverCabinerMedical.js.map" />
         <option value="$PROJECT_DIR$/serverCabinetMedical.js" />
         <option value="$PROJECT_DIR$/utils.js" />
-        <option value="$PROJECT_DIR$/utils.ts" />
         <option value="$PROJECT_DIR$/data/cabinetInfirmier.xml" />
         <option value="$PROJECT_DIR$/serverCabinetMedical.ts" />
         <option value="$PROJECT_DIR$/data/login.json" />
+        <option value="$PROJECT_DIR$/utils.ts" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="980" />
-    <option name="height" value="1050" />
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -151,11 +134,6 @@
               <item name="serveurAngular" type="b2602c69:ProjectViewProjectNode" />
               <item name="serveurAngular" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="serveurAngular" type="b2602c69:ProjectViewProjectNode" />
-              <item name="serveurAngular" type="462c0819:PsiDirectoryNode" />
-              <item name="serverCabinetMedical.ts" type="620a8d5e:NestingTreeNode" />
             </path>
             <path>
               <item name="serveurAngular" type="b2602c69:ProjectViewProjectNode" />
@@ -225,18 +203,19 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39957000" />
+    <option name="totallyTimeSpent" value="40819000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20337197" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20337197" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49966952" weight="0.2742475" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49966952" visible="true" weight="0.2742475" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -322,32 +301,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data/cabinetInfirmier.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1495">
+        <state relative-caret-position="1105">
           <caret line="65" column="76" selection-start-line="65" selection-start-column="76" selection-end-line="65" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/serverCabinetMedical.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4784">
-          <caret line="224" column="57" selection-start-line="224" selection-start-column="57" selection-end-line="224" selection-end-column="57" />
-          <folding>
-            <element signature="e#270#301#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2415">
-          <caret line="105" column="16" selection-start-line="105" selection-start-column="16" selection-end-line="105" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/login.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" column="24" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="24" />
+        <state relative-caret-position="238">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -360,13 +322,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data/cabinet.xsd">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
+        <state relative-caret-position="612">
           <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/actes.xml">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/serverCabinetMedical.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5">
+          <caret line="191" column="43" selection-start-line="191" selection-start-column="43" selection-end-line="191" selection-end-column="43" />
+          <folding>
+            <element signature="e#270#301#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="96" column="29" lean-forward="true" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="29" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

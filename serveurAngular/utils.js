@@ -102,7 +102,7 @@ function getLoginObject() {
 exports.getLoginObject = getLoginObject;
 function sendError(msg, code, res) {
     console.error(msg + "\n");
-    res.writeHead(code, msg + "\n");
+    res.writeHead(code, msg);
     res.end();
 }
 exports.sendError = sendError;

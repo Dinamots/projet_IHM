@@ -8,7 +8,7 @@
      routerLinkActive="active">
     <mat-icon class="home">home</mat-icon>
   </a>
-  <a routerLink="/login" routerLinkActive="active" (click)="logout()">
+  <a *ngIf="isLogged()" routerLink="/login" routerLinkActive="active" (click)="logout()">
     <mat-icon class="logout">power_settings_new</mat-icon>
   </a>
   <div class="name" *ngIf="isLogged()">
@@ -18,7 +18,6 @@
     <span>
       {{getLastName()}}
     </span>
-
   </div>
 </mat-toolbar>
 <div class="principal">
