@@ -1,7 +1,14 @@
 <div>
-  <h2 class="mat-h2">Login</h2>
+  <h2
+    *ngIf="!isLogged()"
+    class="mat-h2"
+  >Login</h2>
+  <h2
+    *ngIf="isLogged()"
+    class="mat-h2"
+  >Already logged</h2>
   <p>{{message}}</p>
-  <div *ngIf="!authService.isLoggedIn" class="mat-form-field inputDiv">
+  <div *ngIf="!isLogged()" class="mat-form-field inputDiv">
     <mat-form-field>
       <label>
         <input
@@ -27,11 +34,12 @@
 
   </div>
 
-  <!-- *ngIf="!authService.isLoggedIn && passwordControl.valid && usernameControl.valid" -->
   <p>
-    <button class="btn btn-primary"
-            (click)="login(username,password)"
-            type="submit"
+    <button
+      class="btn btn-primary"
+      (click)="login(username,password)"
+      type="submit"
+      *ngIf="!isLogged() && passwordControl.valid && usernameControl.valid"
     >Login
     </button>
   </p>

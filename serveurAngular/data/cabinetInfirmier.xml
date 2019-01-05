@@ -43,66 +43,9 @@
         </infirmier>
     </infirmiers>
     <patients>
-        <patient>
-            <nom>Aire</nom>
-            <prénom>Axel</prénom>
-            <sexe>M</sexe>
-            <naissance>1993-06-13</naissance>
-            <!-- Homme, né en juin 93 en France, à Marseille (n° 55 en bouches du rhône)
-            453e naissance (clé calculée: 19)-->
-            <numéro>193061305545319</numéro>
-            <adresse>
-                <étage>4</étage>
-                <numéro>46</numéro>
-                <rue>avenue Félix Viallet</rue>
-                <ville>Grenoble</ville>
-                <codePostal>38031</codePostal>
-            </adresse>
-            <!-- Ici, j'ai choisi d'identifier l'infirmière par un numéro.
-            Un prénom peut porter à confusion.
-            Un login peut être ok -->
-
-            <!--
-            Axel a eu un accident de moto à cause duquel il a dû être opéré.
-            Il est immobilisé pour un mois et doit donc recevoir des injections
-            sous-cutanées d'anti-coagulant tous les jours pendant une semaine pour éviter les flébites.
-            (Q: Peut-on ajouter la contrainte qu'elles doievent être faites à la même heure chaque jour ?)
-            L'intervenant qui prend en charge Axel est le n°2. Cet intervenant
-            ne travaille pas le mercredi et doit donc céder sa place à l'intervenant
-            n°1 ce jour là.
-            Lors de la dernière visite, l'intervenant doit aussi enlever les 25 points de suture de son opération.
-            -->
-            <visite date="2014-12-08" intervenant="002">
-                <acte id="109"/>
-            </visite>
-
-        </patient>
         
-        <patient>
-            <nom>Oscare</nom>
-            <prénom>Pien</prénom>
-            <sexe>M</sexe>
-            <naissance>1975-10-25</naissance>
-            <!-- Homme, née en octobre 75 en France, à Chambéry (n° 65 dans la Savoie)
-            692e naissance (clé calculée: 67)-->
-            <numéro>175107306569267</numéro>
-            <adresse>
-                <rue>rue Casimir Brenier</rue>
-                <ville>Grenoble</ville>
-                <codePostal>38000</codePostal>
-            </adresse>
-            <!--
-            Oscar s'est cassé l'os du pied en jouant au foot. d
-            Il a besoin d'un prélèvement par ponction veineuse directe le premier
-            jour et injection intraveineuse directe isolée d'anthalgiques les
-            autres jours.
-            -->
-            <visite date="2014-12-08" intervenant="001">
-                <acte id="101"/>
-                <acte id="104"/>
-            </visite>
-
-        </patient>
+        
+        
         <patient>
             <nom>Xavier</nom>
             <prénom>Kapoëtla</prénom>
@@ -121,7 +64,7 @@
             Le jeune Xavier est en cours de désensibilation alergique.
             Il doit recevoir tous les jours, l'injection de plusieurs allergènes, etc.
             -->
-            <visite date="2014-12-08" intervenant="003">
+            <visite date="2014-12-08" intervenant="">
                 <acte id="111"/>
             </visite>
 
@@ -129,5 +72,5 @@
         
 
 
-    </patients>
+    <patient><nom>Oscare</nom><prénom>Pien</prénom><numéro>175107306569267</numéro><sexe>M</sexe><naissance>1975-10-25</naissance><visite date="2014-12-08" intervenant=""/><adresse><étage></étage><numéro></numéro><rue>rue Casimir Brenier</rue><ville>Grenoble</ville><codePostal>38000</codePostal></adresse></patient><patient><nom>Aire</nom><prénom>Axel</prénom><numéro>193061305545319</numéro><sexe>M</sexe><naissance>1993-06-13</naissance><visite date="2014-12-08" intervenant=""/><adresse><étage>4</étage><numéro>46</numéro><rue>avenue Félix Viallet</rue><ville>Grenoble</ville><codePostal>38031</codePostal></adresse></patient></patients>
 </cabinet>

@@ -2,38 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e9660c0-427f-4238-ab36-590c0af987b9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/app.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/auth/login/login.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/auth/login/login.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/auth/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/auth/login/login.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/auth/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/auth/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmier.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmier/infirmier.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmier.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmier/infirmier.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmier.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmier/infirmier.component.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmier.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmier/infirmier.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmier.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmier/infirmier.service.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmier.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmier/infirmier.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmiers-list/infirmiers-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmiers-list.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmiers-list/infirmiers-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmiers-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmiers-list/infirmiers-list.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmiers-list.component.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmiers-list/infirmiers-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmiers-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/page-not-found/page-not-found.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/page-not-found/page-not-found.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/dialog-patient/dialog-patient.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/dialog-patient/dialog-patient.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/dialog-patient/dialog-patient.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/dialog-patient/dialog-patient.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/dialog-patient/dialog-patient.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/dialog-patient/dialog-patient.component.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/dialog-patient/dialog-patient.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/dialog-patient/dialog-patient.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patient.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/patient.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patient.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/patient.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patient.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/patient.component.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patient.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/patient.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patients-list/patients-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patients-list.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patients-list/patients-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patients-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patients-list/patients-list.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patients-list.component.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patients-list/patients-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patients-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/secretary/secretary.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/secretary/secretary.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/cabinetInfirmier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data/cabinetInfirmier.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -49,8 +24,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/cabinetInfirmier.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1105">
-              <caret line="65" column="76" selection-start-line="65" selection-start-column="76" selection-end-line="65" selection-end-column="76" />
+            <state relative-caret-position="765">
+              <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -70,7 +45,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/utils.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
+            <state relative-caret-position="462">
               <caret line="96" column="29" lean-forward="true" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="29" />
             </state>
           </provider>
@@ -134,7 +109,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -226,11 +201,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41215000" />
+    <option name="totallyTimeSpent" value="41826000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20337197" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -239,7 +213,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49966952" visible="true" weight="0.2742475" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39910814" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -324,8 +298,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data/cabinetInfirmier.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="65" column="76" selection-start-line="65" selection-start-column="76" selection-end-line="65" selection-end-column="76" />
+        <state relative-caret-position="765">
+          <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -365,7 +339,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/utils.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
+        <state relative-caret-position="462">
           <caret line="96" column="29" lean-forward="true" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="29" />
         </state>
       </provider>
