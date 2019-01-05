@@ -1,37 +1,38 @@
-<h2 class="mat-h2">LOGIN</h2>
-<p>{{message}}</p>
-<div *ngIf="!authService.isLoggedIn" class="mat-form-field" style="display: flex;
-  flex-direction: column;">
-  <mat-form-field>
-    <label>
-      <input
-        placeholder="username"
-        [formControl]="usernameControl"
-        (change)="this.username = $event.target.value"
-        matInput
-        type="text"
-      >
-    </label>
-  </mat-form-field>
-  <mat-form-field>
-    <label>
-      <input
-        placeholder="password"
-        [formControl]="passwordControl"
-        (change)="this.password = $event.target.value"
-        matInput
-        type="password"
-      >
-    </label>
-  </mat-form-field>
+<div>
+  <h2 class="mat-h2">Login</h2>
+  <p>{{message}}</p>
+  <div *ngIf="!authService.isLoggedIn" class="mat-form-field inputDiv">
+    <mat-form-field>
+      <label>
+        <input
+          placeholder="username"
+          [formControl]="usernameControl"
+          (change)="this.username = $event.target.value"
+          matInput
+          type="text"
+        >
+      </label>
+    </mat-form-field>
+    <mat-form-field>
+      <label>
+        <input
+          placeholder="password"
+          [formControl]="passwordControl"
+          (change)="this.password = $event.target.value"
+          matInput
+          type="password"
+        >
+      </label>
+    </mat-form-field>
 
+  </div>
+
+  <!-- *ngIf="!authService.isLoggedIn && passwordControl.valid && usernameControl.valid" -->
+  <p>
+    <button class="btn btn-primary"
+            (click)="login(username,password)"
+            type="submit"
+    >Login
+    </button>
+  </p>
 </div>
-
-<p>
-  <button
-    (click)="login(username,password)"
-    type="submit"
-    *ngIf="!authService.isLoggedIn && passwordControl.valid && usernameControl.valid"
-  >Login
-  </button>
-</p>

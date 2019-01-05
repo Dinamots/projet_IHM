@@ -2,15 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e9660c0-427f-4238-ab36-590c0af987b9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/auth/auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/auth/auth.guard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/auth/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/services/local-storage.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/services/local-storage.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/app.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/auth/login/login.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/auth/login/login.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/auth/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/auth/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/auth/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/auth/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmier.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmier/infirmier.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmier.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmier/infirmier.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmier.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmier/infirmier.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmier.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmier/infirmier.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmier.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmier/infirmier.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmier.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmier/infirmier.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmiers-list/infirmiers-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmiers-list.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmiers-list/infirmiers-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmiers-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmiers-list/infirmiers-list.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmiers-list.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmiers-list/infirmiers-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmiers-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/page-not-found/page-not-found.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/page-not-found/page-not-found.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/dialog-patient/dialog-patient.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/dialog-patient/dialog-patient.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/dialog-patient/dialog-patient.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/dialog-patient/dialog-patient.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/dialog-patient/dialog-patient.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/dialog-patient/dialog-patient.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/dialog-patient/dialog-patient.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/dialog-patient/dialog-patient.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patient.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/patient.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patient.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/patient.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patient.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/patient.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patient.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/patient.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patients-list/patients-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patients-list.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patients-list/patients-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patients-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patients-list/patients-list.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patients-list.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patients-list/patients-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patients-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/secretary/secretary.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/secretary/secretary.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serverCabinetMedical.js" beforeDir="false" afterPath="$PROJECT_DIR$/serverCabinetMedical.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/utils.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -111,7 +134,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -203,10 +226,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40819000" />
+    <option name="totallyTimeSpent" value="41215000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20337197" />

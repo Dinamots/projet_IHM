@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {InfirmierInterface} from '../dataInterfaces/infirmier';
+import {InfirmierInterface} from '../../dataInterfaces/infirmier';
 import {ActivatedRoute, ActivatedRouteSnapshot, Router, RouterStateSnapshot} from '@angular/router';
 import {mergeMap, switchMap, take} from 'rxjs/operators';
-import {CabinetMedicalService} from '../cabinet-medical.service';
+import {CabinetMedicalService} from '../../cabinet-medical.service';
 import {EMPTY, Observable, of} from 'rxjs';
 
 @Component({

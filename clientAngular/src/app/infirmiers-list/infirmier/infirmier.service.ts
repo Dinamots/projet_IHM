@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRoute, ActivatedRouteSnapshot, Router, RouterStateSnapshot} from '@angular/router';
 import {EMPTY, Observable, of} from 'rxjs';
-import {InfirmierInterface} from '../dataInterfaces/infirmier';
-import {CabinetMedicalService} from '../cabinet-medical.service';
-import {LocalStorageService} from '../services/local-storage.service';
+import {InfirmierInterface} from '../../dataInterfaces/infirmier';
+import {CabinetMedicalService} from '../../cabinet-medical.service';
+import {LocalStorageService} from '../../services/local-storage.service';
 
 @Injectable({
   providedIn: 'root'

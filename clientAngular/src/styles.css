@@ -48,7 +48,7 @@ button.add-patient {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-app-page-not-found{
-  text-align: center;
-  color: red;
-}
+app-page-not-found h2.not-found{
+   text-align: center;
+   color: red;
+ }

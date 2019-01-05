@@ -7,7 +7,7 @@ import {AuthService} from '../auth.service';
 import {CabinetMedicalService} from '../../cabinet-medical.service';
 import {MatDialog} from '@angular/material';
 import {PatientInterface} from '../../dataInterfaces/patient';
-import {DialogPatientComponent} from '../../patient/dialog-patient/dialog-patient.component';
+import {DialogPatientComponent} from '../../patients-list/patient/dialog-patient/dialog-patient.component';
 import {DialogComponent} from '../../dialog/dialog.component';
 import {CabinetInterface} from '../../dataInterfaces/cabinet';
 import {FormControl, Validators} from '@angular/forms';
@@ -27,7 +27,6 @@ export class LoginComponent {
   public passwordControl: FormControl = new FormControl(this.password, [Validators.required]);
 
   constructor(public authService: AuthService, public router: Router, public dialog: MatDialog, public cabinetMedicalService: CabinetMedicalService) {
-    this.setMessage();
     this.cabinetMedicalService.cabinet.subscribe(cabinet => {
       this.cabinet = cabinet;
     });
@@ -49,12 +48,10 @@ export class LoginComponent {
   }
 
   async login(username, password) {
-    this.message = 'Trying to log in ...';
     console.log(username);
     this.authService.login(username, password)
       .then(infos => {
         console.log(infos);
-        this.setMessage();
         if (this.authService.isLoggedIn) {
           // Get the redirect URL from our auth service
           // If no redirect has been set, use the default
@@ -72,7 +69,6 @@ export class LoginComponent {
         }
       })
       .catch(err => {
-        this.message = 'can\'t login';
         this.resetValues();
         console.log(err);
         this.openDialog();
@@ -95,6 +91,5 @@ export class LoginComponent {
 
   logout() {
     this.authService.logout();
-    this.setMessage();
   }
 }
