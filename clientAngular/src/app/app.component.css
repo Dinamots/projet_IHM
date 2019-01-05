@@ -1,0 +1,20 @@
+mat-icon.home {
+  color : greenyellow;
+}
+mat-icon.logout {
+  color : red;
+  padding-right : 5px;
+}
+.title {
+  font-size: xx-large;
+  color: coral;
+}
+
+.name {
+  text-align: right;
+  padding-left: 5px;
+}
+
+.principal {
+  padding-top : 12px;
+}
