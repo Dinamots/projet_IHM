@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CabinetMedicalService} from '../cabinet-medical.service';
 import {CabinetInterface} from '../dataInterfaces/cabinet';
-import {DialogPatientComponent} from '../patient/dialog-patient/dialog-patient.component';
+import {DialogPatientComponent} from '../patients-list/patient/dialog-patient/dialog-patient.component';
 import {MatDialog} from '@angular/material';
 import {DialogComponent} from '../dialog/dialog.component';
 import {PatientInterface} from '../dataInterfaces/patient';

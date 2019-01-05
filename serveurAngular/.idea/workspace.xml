@@ -2,17 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e9660c0-427f-4238-ab36-590c0af987b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../clientAngular/src/app/dataInterfaces/loginInterface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/auth/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/app.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/auth/login/login.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/auth/login/login.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/auth/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/auth/login/login.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/auth/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/auth/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmier.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmier.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmier.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmier/infirmier.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmier.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmier/infirmier.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmier.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmier/infirmier.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmier.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmier/infirmier.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmier.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmier/infirmier.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmier.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmier/infirmier.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmiers-list/infirmiers-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmiers-list.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmiers-list/infirmiers-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmiers-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmiers-list/infirmiers-list.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmiers-list.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/infirmier/infirmiers-list/infirmiers-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/infirmiers-list/infirmiers-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/page-not-found/page-not-found.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/page-not-found/page-not-found.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/dialog-patient/dialog-patient.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/dialog-patient/dialog-patient.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/dialog-patient/dialog-patient.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/dialog-patient/dialog-patient.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/dialog-patient/dialog-patient.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/dialog-patient/dialog-patient.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/dialog-patient/dialog-patient.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/dialog-patient/dialog-patient.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patient.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/patient.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patient.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/patient.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patient.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/patient.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patient.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patient/patient.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patients-list/patients-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patients-list.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patients-list/patients-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patients-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patients-list/patients-list.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patients-list.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/patient/patients-list/patients-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/patients-list/patients-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/app/secretary/secretary.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/app/secretary/secretary.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../clientAngular/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../clientAngular/src/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/login.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/login.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serverCabinetMedical.js" beforeDir="false" afterPath="$PROJECT_DIR$/serverCabinetMedical.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serverCabinetMedical.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/serverCabinetMedical.js.map" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/cabinetInfirmier.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="65" column="76" lean-forward="true" selection-start-line="65" selection-start-column="76" selection-end-line="65" selection-end-column="76" />
+            <state relative-caret-position="1105">
+              <caret line="65" column="76" selection-start-line="65" selection-start-column="76" selection-end-line="65" selection-end-column="76" />
             </state>
           </provider>
         </entry>
@@ -37,8 +58,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/serverCabinetMedical.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="224" column="57" selection-start-line="224" selection-start-column="57" selection-end-line="224" selection-end-column="57" />
+            <state relative-caret-position="-5">
+              <caret line="191" column="43" selection-start-line="191" selection-start-column="43" selection-end-line="191" selection-end-column="43" />
               <folding>
                 <element signature="e#270#301#0" expanded="true" />
               </folding>
@@ -46,20 +67,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/utils.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="105" column="16" selection-start-line="105" selection-start-column="16" selection-end-line="105" selection-end-column="16" />
+            <state relative-caret-position="403">
+              <caret line="96" column="29" lean-forward="true" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/login.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+            <state relative-caret-position="238">
+              <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -67,7 +88,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/cabinet.xsd">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
+            <state relative-caret-position="612">
               <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
             </state>
           </provider>
@@ -106,18 +127,17 @@
         <option value="$PROJECT_DIR$/serverCabinerMedical.js.map" />
         <option value="$PROJECT_DIR$/serverCabinetMedical.js" />
         <option value="$PROJECT_DIR$/utils.js" />
-        <option value="$PROJECT_DIR$/utils.ts" />
         <option value="$PROJECT_DIR$/data/cabinetInfirmier.xml" />
         <option value="$PROJECT_DIR$/serverCabinetMedical.ts" />
         <option value="$PROJECT_DIR$/data/login.json" />
+        <option value="$PROJECT_DIR$/utils.ts" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="980" />
-    <option name="height" value="1050" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -151,7 +171,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../clientAngular" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="D:\Users\PC-ASUS\dev\src\FAC\S5\CL&amp;IHM\projet\serveurAngular\node_modules\tslint" />
@@ -200,14 +220,16 @@
       <workItem from="1546088066123" duration="10717000" />
       <workItem from="1546175914149" duration="4531000" />
       <workItem from="1546552088527" duration="2682000" />
+      <workItem from="1546614225647" duration="1121000" />
+      <workItem from="1546687610068" duration="618000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38218000" />
+    <option name="totallyTimeSpent" value="41215000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20337197" />
@@ -286,13 +308,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/serverCabinetMedical.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="187" column="20" selection-start-line="187" selection-start-column="20" selection-end-line="187" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
@@ -307,41 +322,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data/cabinetInfirmier.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1105">
+          <caret line="65" column="76" selection-start-line="65" selection-start-column="76" selection-end-line="65" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/login.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/serverCabinetMedical.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4301">
+          <caret line="187" column="14" lean-forward="true" selection-start-line="187" selection-start-column="14" selection-end-line="187" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/data/cabinet.xsd">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
+        <state relative-caret-position="612">
           <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/cabinetInfirmier.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="65" column="76" lean-forward="true" selection-start-line="65" selection-start-column="76" selection-end-line="65" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="105" column="16" selection-start-line="105" selection-start-column="16" selection-end-line="105" selection-end-column="16" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/data/actes.xml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/serverCabinetMedical.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="224" column="57" selection-start-line="224" selection-start-column="57" selection-end-line="224" selection-end-column="57" />
+        <state relative-caret-position="-5">
+          <caret line="191" column="43" selection-start-line="191" selection-start-column="43" selection-end-line="191" selection-end-column="43" />
           <folding>
             <element signature="e#270#301#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/login.json">
+    <entry file="file://$PROJECT_DIR$/utils.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+        <state relative-caret-position="403">
+          <caret line="96" column="29" lean-forward="true" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="29" />
         </state>
       </provider>
     </entry>

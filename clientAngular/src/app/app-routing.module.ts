@@ -3,8 +3,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {SecretaryComponent} from './secretary/secretary.component';
 import {AuthGuard} from './auth/auth.guard';
-import {InfirmierComponent} from './infirmier/infirmier.component';
-import {InfirmierService} from './infirmier/infirmier.service';
+import {InfirmierComponent} from './infirmiers-list/infirmier/infirmier.component';
+import {InfirmierService} from './infirmiers-list/infirmier/infirmier.service';
 
 const appRoutes: Routes = [
   {path: 'secretary', component: SecretaryComponent, canActivate: [AuthGuard]},

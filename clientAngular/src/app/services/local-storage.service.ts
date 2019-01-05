@@ -16,4 +16,8 @@ export class LocalStorageService {
   static setLogin(login: LoginInterface) {
     localStorage.setItem('login', JSON.stringify(login));
   }
+
+  static removeLoginData() {
+    localStorage.removeItem('login');
+  }
 }

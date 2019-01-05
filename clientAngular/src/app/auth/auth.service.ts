@@ -1,10 +1,6 @@
 import {Injectable} from '@angular/core';
-
-import {Observable, of} from 'rxjs';
-import {tap, delay} from 'rxjs/operators';
 import {CabinetMedicalService} from '../cabinet-medical.service';
 import {LocalStorageService} from '../services/local-storage.service';
-import {Local} from 'protractor/built/driverProviders';
 import {LoginInterface} from '../dataInterfaces/loginInterface';
 
 @Injectable({
@@ -55,6 +51,7 @@ export class AuthService {
   }
 
   logout(): void {
+    LocalStorageService.removeLoginData();
     this.isLoggedIn = false;
     this._loginData = null;
     this.redirectUrl = null;
