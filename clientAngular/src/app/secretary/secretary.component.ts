@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {CabinetMedicalService} from '../cabinet-medical.service';
 import {CabinetInterface} from '../dataInterfaces/cabinet';
-import {HttpClient} from '@angular/common/http';
+import {DialogPatientComponent} from '../patients-list/patient/dialog-patient/dialog-patient.component';
+import {MatDialog} from '@angular/material';
+import {DialogComponent} from '../dialog/dialog.component';
+import {PatientInterface} from '../dataInterfaces/patient';
 
 @Component({
   selector: 'app-secretary',
@@ -11,8 +14,42 @@ import {HttpClient} from '@angular/common/http';
 export class SecretaryComponent implements OnInit {
   private _cabinet: CabinetInterface;
 
-  constructor(private cabinetMedicalService: CabinetMedicalService) {
-    this.cabinetMedicalService.cabinet.subscribe(cabinet => this._cabinet = cabinet);
+  constructor(private cabinetMedicalService: CabinetMedicalService, public dialog: MatDialog) {
+    this.cabinetMedicalService.cabinet.subscribe(cabinet => {
+      this._cabinet = cabinet;
+    });
+  }
+
+  /**
+   * Fonction qui va gérer toute l'IHM de la sécrétaire
+   */
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogPatientComponent, {
+      width: '250px',
+      data: {
+        adresse: {}
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((result: PatientInterface) => {
+      console.log(result);
+      if (result !== undefined) {
+        this.cabinetMedicalService.addPatient(result)
+          .then(res => {
+            console.log(res);
+            this.cabinetMedicalService.addPatientModel(result);
+          })
+          .catch(err => {
+            console.log(err);
+            this.dialog.open(DialogComponent, {
+              width: '250px',
+              data: `Un patient porte déjà le numéro ${result.numeroSecuriteSociale} , ajout impossible`
+            });
+          });
+      }
+      console.log('The dialog was closed');
+    });
   }
 
   ngOnInit() {
@@ -21,17 +58,5 @@ export class SecretaryComponent implements OnInit {
 
   get cabinet(): CabinetInterface {
     return this._cabinet;
-  }
-
-  set cabinet(value: CabinetInterface) {
-    this._cabinet = value;
-  }
-
-  public affectation() {
-    let infirmier = this._cabinet.infirmiers[0];
-    console.log(infirmier);
-    let patient = this._cabinet.infirmiers[1].patients[0];
-    console.log(patient);
-    this.cabinetMedicalService.affectation(infirmier, patient);
   }
 }
